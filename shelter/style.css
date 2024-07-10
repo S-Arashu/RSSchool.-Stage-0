@@ -78,7 +78,7 @@ body {
     line-height: 24px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
-    filter: brightness(70%);
+    filter: brightness(90%);
     transition: .3s ease-in-out;
 }
 
@@ -144,7 +144,7 @@ h1 {
 .not-only-button {
     border-radius: 100px;
     background-color: #F1CDB3;
-    filter: brightness(80%);
+    filter: brightness(90%);
     transition: .3s ease-in-out;
 }
 
@@ -198,4 +198,121 @@ h1 {
     font-size: 15px;
     line-height: 24px;
     color: #4C4C4C;
+}
+
+/* our friends */
+
+.container-our-friends {
+    background-color: #F6F6F6;
+}
+
+.our-friends {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    height: 877px;
+    justify-content: center;
+}
+
+.our-friends-title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 35px;
+    line-height: 45.5px;
+    letter-spacing: 3px;
+    color: #545454;
+    text-align: center;
+    max-width: 400px;
+    margin: 0;
+}
+
+.arrow-left, .arrow-right {
+    border-radius: 100px;
+    border: 2px solid #F1CDB3;
+    transition: .3s ease-in-out;
+}
+
+.arrow-left-link, .arrow-right-link {
+    padding: 15px 11px;
+    display: block;
+}
+
+.arrow-left:hover, .arrow-right:hover, .card-button:hover {
+    background-color: #F1CDB3;
+}
+
+.arrow-left-img, .arrow-right-img {
+    width: 14px;
+}
+
+.our-frends-card {
+    max-width: 270px;
+    background-color: #FAFAFA;
+    border-radius: 9px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+
+.card-title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    line-height: 22.72px;
+    letter-spacing: 3px;
+    color: #545454;
+}
+
+.card-button {
+    border-radius: 100px;
+    border: 2px solid #F1CDB3;
+    background-color: #FAFAFA;
+    margin-bottom: 30px;
+    transition: .3s ease-in-out;
+}
+
+.card-button-link {
+    text-decoration: none;
+    display: block;
+    padding: 15px 45px;
+    color: #292929;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 17px;
+    line-height: 22.1px;
+    letter-spacing: 3px;
+}
+
+.our-friends-slider {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 53px;
+}
+
+.our-friends-items {
+    display: flex;
+    gap: 90px;
+}
+
+.our-friends-button {
+    border-radius: 100px;
+    background-color: #F1CDB3;
+    border: none;
+    filter: brightness(90%);
+    transition: .3s ease-in-out;
+}
+
+.our-friends-button:hover {
+    filter: brightness(100%);
+}
+
+.button-link {
+    padding: 15px 45px;
+    text-decoration: none;
+    display: block;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 17px;
+    line-height: 22.1px;
+    letter-spacing: 3px;
+    color: #292929;
 }
