@@ -1,0 +1,52 @@
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 1280px;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.header {
+    background: rgb(33, 31, 32);
+    background: radial-gradient(circle, rgba(33, 31, 32, 1) 0%, rgba(91, 72, 58, 1) 100%, rgba(38, 36, 37, 1) 100%);
+    height: 908px;
+    padding-top: 30px;
+}
+
+.header-top {
+    max-width: 184px;
+}
+
+.header-top p:first-child {
+    color: #F1CDB3;
+    font-size: 32px;
+    font-weight: 400;
+    margin: 0;
+    text-align: center;
+    line-height: 35.2px;
+}
+
+.header-top p:last-child {
+    color: #FFFFFF;
+    font-size: 13px;
+    text-align: center;
+    line-height: 14.95px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+}
