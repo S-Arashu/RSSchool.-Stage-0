@@ -19,6 +19,8 @@ body {
     margin-left: auto;
 }
 
+/* header */
+
 .header-logo p {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
@@ -159,4 +161,41 @@ h1 {
     position: absolute;
     bottom: 0;
     right: 0;
+}
+
+/* about shelter */
+
+.about-shelter {
+    height: 588px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 120px;
+}
+
+.about-shelter-img, .about-shelter-desc {
+    height: 408px;
+}
+
+.about-shelter-img {
+    width: 300px;
+}
+
+.about-shelter-desc {
+    width: 430px;
+}
+
+.about-title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 35px;
+    line-height: 45.5px;
+    color: #545454;
+    letter-spacing: 3px;
+}
+
+.about-desc {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 24px;
+    color: #4C4C4C;
 }
