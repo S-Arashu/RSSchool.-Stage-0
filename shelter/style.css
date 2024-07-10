@@ -4,6 +4,7 @@ html {
 
 * {
     box-sizing: border-box;
+    font-weight: 400;
 }
 
 body {
@@ -18,7 +19,7 @@ body {
     margin-left: auto;
 }
 
-p {
+.header-logo p {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
@@ -26,6 +27,7 @@ p {
     background: linear-gradient(298deg, rgba(33, 31, 32, 1) 37%, rgba(91, 72, 58, 1) 100%, rgba(38, 36, 37, 1) 100%);
     height: 908px;
     padding-top: 30px;
+    position: relative;
 }
 
 .header-top {
@@ -41,7 +43,6 @@ p {
 .header-top p:first-child {
     color: #F1CDB3;
     font-size: 32px;
-    font-weight: 400;
     margin: 0;
     text-align: center;
     line-height: 35.2px;
@@ -53,7 +54,6 @@ p {
     text-align: center;
     line-height: 14.95px;
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: 400;
 }
 
 .header-item {
@@ -106,4 +106,57 @@ p {
 
 .nav-link:hover {
     filter: brightness(100%);
+}
+
+.header-not-only {
+    display: flex;
+    justify-content: space-between;
+}
+
+h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 44px;
+    line-height: 57.2px;
+    color: #FFFFFF;
+    max-width: 310px;
+}
+
+.not-only-about {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 24px;
+    color: #CDCDCD;
+    padding: 42px 0;
+}
+
+.not-only-button a {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 17px;
+    line-height: 22.1px;
+    color: #292929;
+    display: block;
+    text-decoration: none;
+    padding: 15px 45px;
+}
+
+.not-only-button {
+    border-radius: 100px;
+    background-color: #F1CDB3;
+    filter: brightness(80%);
+    transition: .3s ease-in-out;
+}
+
+.not-only-button:hover {
+    filter: brightness(100%);
+}
+
+.not-only-desc {
+    width: 460px;
+    padding-top: 163px;
+}
+
+.not-only-img, .not-only-img img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
