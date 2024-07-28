@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cozy House</title>
+    <title>Cozy House</title>   
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./assets/img/favicon-pets.ico">
 </head>
@@ -30,12 +30,13 @@
                     <p class="not-only-about">We offer to give a chance to a little and nice puppy with an extremely wide and open heart. He or she will love you more than anybody else in the world, you will see!</p>
                     <div class="not-only-button"><a href="#our-friends">Make a friend</a></div>
                 </div>
-                <div class="not-only-img">
+                <!-- <div class="not-only-img"> -->
                     <img src="./assets/img/start-screen-puppy.png" alt="Puppy">
-                </div>
+                <!-- </div> -->
             </div>
         </div>
     </header>
+    
     <main class="main">
         <div class="container">
             <div class="about-shelter">
@@ -57,21 +58,27 @@ are looking for a house</h3>
                     <div class="our-friends-slider">
                         <div class="arrow-left"><img class="arrow-left-img" src="./assets/img/Arrow.png" alt="Left"></div>
                         <div class="our-friends-items">
-                            <div class="our-frends-card">
-                                <img src="./assets/img/pets-katrine.png" alt="Katrine" class="card-img">
-                                <p class="card-title">Katrine</p>
-                                <div class="card-button"><a class="card-button-link" href="#">Learn more</a></div>
-                            </div>
-                            <div class="our-frends-card">
-                                <img src="./assets/img/pets-jennifer.png" alt="Jennifer" class="card-img">
-                                <p class="card-title">Jennifer</p>
-                                <div class="card-button"><a class="card-button-link" href="#">Learn more</a></div>
-                            </div>
-                            <div class="our-frends-card">
-                                <img src="./assets/img/pets-woody.png" alt="Woody" class="card-img">
-                                <p class="card-title">Woody</p>
-                                <div class="card-button"><a class="card-button-link" href="#">Learn more</a></div>
-                            </div>
+                            <a class="our-friends-card-link" href="#">
+                        <div class="our-frends-card">
+                            <img src="./assets/img/pets-katrine.png" alt="Katrine" class="card-img">
+                            <p class="card-title">Katrine</p>
+                            <div class="card-button"><span class="card-button-link">Learn more</span></div>
+                        </div>
+                    </a>
+                    <a class="our-friends-card-link" href="#">
+                        <div class="our-frends-card">
+                            <img src="./assets/img/pets-jennifer.png" alt="Jennifer" class="card-img">
+                            <p class="card-title">Jennifer</p>
+                            <div class="card-button"><span class="card-button-link">Learn more</span></div>
+                        </div>
+                    </a>
+                    <a class="our-friends-card-link" href="#">
+                        <div class="our-frends-card">
+                            <img src="./assets/img/pets-woody.png" alt="Woody" class="card-img">
+                            <p class="card-title">Woody</p>
+                            <div class="card-button"><span class="card-button-link">Learn more</span></div>
+                        </div>
+                    </a>
                         </div>
                         <div class="arrow-right"><img class="arrow-right-img" src="./assets/img/Arrow-right.png" alt="Right"></div>
                     </div>
@@ -141,8 +148,12 @@ our shelter</h3>
         </div>
         
     </main>
+    
     <footer class="footer" id="footer">
-        <div class="container footer-container">
+        <!-- <div class="container"> -->
+        <div class="container">
+        <div class="wrapper">
+        <div class="footer-container">
             <div class="footer-block">
                 <h3 class="block-title">For questions and suggestions</h3>
                 <div class="block-item">
@@ -165,7 +176,11 @@ our shelter</h3>
                     <a href="https://maps.app.goo.gl/ZjfMwSrAbASzwzTt6" target="_blank" class="block-link">18 South Park, London</a>
                 </div>
             </div>
-            <img src="./assets/img/footer-puppy.png" alt="Puppy" class="footer-img">
+            
+        </div>
+        <!-- </div> -->
+        <img src="./assets/img/footer-puppy.png" alt="Puppy" class="footer-img">
+        </div>
         </div>
     </footer>
 </body>
