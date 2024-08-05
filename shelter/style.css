@@ -281,7 +281,7 @@ h1 {
 
 .about-shelter-img {
     width: 300px;
-    margin-bottom: 1.7%;
+    margin-bottom: 2%;
 }
 
 .about-shelter-desc {
@@ -290,7 +290,7 @@ h1 {
     flex-wrap: wrap;
     flex-direction: column;
     gap: 25px;
-    margin-top: 0.5%;
+    margin-top: 0.2%;
 }
 
 .about-title {
@@ -764,6 +764,8 @@ h1 {
 
 @media((min-width: 768px) and (max-width: 1279px)) {
 
+    /* header */
+
     body {
         min-width: 768px;
         width: 100%;
@@ -794,6 +796,26 @@ h1 {
     .not-only-button {
         margin-left: auto;
         margin-right: auto;
+    }
+
+    /* about */
+
+    .about-shelter{
+        min-height: 1048px;
+        flex-direction: column-reverse
+    }
+
+    .about-shelter{
+        gap: 52px;
+    }
+
+    .about-shelter-img{
+        margin-bottom: 3.6%;
+    }
+
+    .about-shelter-desc{
+        gap: 24px;
+        margin-top: 0.8%;
     }
 }
 
@@ -873,6 +895,26 @@ h1 {
             margin-left: auto;
             margin-right: auto;
         }
+
+        /* about */
+        
+        .about-shelter {
+            min-height: 1048px;
+            flex-direction: column-reverse
+        }
+        
+        .about-shelter {
+            gap: 52px;
+        }
+        
+        .about-shelter-img {
+            margin-bottom: 3.6%;
+        }
+        
+        .about-shelter-desc {
+            gap: 24px;
+            margin-top: 0.8%;
+        }
 }
 
 @media((min-width: 320px) and (max-width: 639px)){
@@ -951,5 +993,42 @@ h1 {
     .not-only-button{
         margin-left: auto;
         margin-right: auto;
+    }
+
+    /* about */
+
+    .about-shelter-desc{
+        flex-wrap: nowrap;
+        width: 270px;
+        gap: 23px;
+    }
+
+    .about-shelter{
+        min-height: 974px;
+        max-height: 974px;
+        flex-direction: column-reverse;
+        padding-top: 14.5%;
+        flex-wrap: nowrap;
+        gap: 108px;
+    }
+
+    .about-title{
+        text-align: center;
+        font-size: 25px;
+        line-height: 130%;
+        margin-top: -1.6%;
+    }
+
+    .about-desc{
+        text-align: justify;
+    }
+
+    .about-shelter-img, .about-shelter-pets{
+        width: 260px;
+    }
+
+    .about-shelter-img{
+        margin: 0 0 5% 0;
+        padding-top: 4.6%;
     }
 }
