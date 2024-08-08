@@ -866,6 +866,17 @@ h1 {
     .help-item:last-child{
         padding-right: 2.1%;
     }
+
+    /* donation */
+
+    .container-donation{
+        min-height: 783px;
+    }
+
+    .donation{
+        flex-direction: column-reverse;
+        gap: 59px;
+    }
 }
 
 @media((min-width: 640px) and (max-width: 767px)){
@@ -1001,6 +1012,16 @@ h1 {
     .help-item{
         margin-left: auto;
         margin-right: auto;
+    }
+
+    /* donation */
+    
+    .donation {
+        flex-direction: column-reverse;
+    }
+
+    .donation-desc {
+        align-items: center;
     }
 }
 
@@ -1170,6 +1191,20 @@ h1 {
 
     .help-item:first-child {
         padding-left: 0%;
+    }
+
+    /* donation */
+
+    .donation {
+        flex-direction: column-reverse;
+    }
+
+    .donation-desc{
+        align-items: center;
+    }
+
+    .donation-img{
+        width: 400px;
     }
 }
 
@@ -1382,4 +1417,52 @@ h1 {
         padding-left: 6%;
     }
     
+    /* donation */
+
+    .donation{
+        flex-direction: column-reverse;
+        gap: 42px;
+    }
+
+    .container-donation{
+        padding: 41.6px 0 42px 0;
+    }
+    
+    .donation-img {
+        width: 260px;
+    }
+
+    .donation-desc{
+        max-width: 280px;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .desc-bank-title{
+        font-size: 25px;
+        line-height: 130%;
+        text-align: center;
+        max-width: 229px;
+    }
+
+    .desc-card-number{
+        max-width: 281px;
+    }
+
+    .number-link{
+        font-size: 15px;
+        line-height: 110%;
+        letter-spacing: 0.06em;
+        padding: 8px 13px 8px 0;
+    }
+    
+    .desc-bank-info{
+        line-height: 160%;
+        letter-spacing: 0;
+        text-align: center;
+    }
+
+    .desc-legal-information{
+        text-align: justify;
+    }
 }
