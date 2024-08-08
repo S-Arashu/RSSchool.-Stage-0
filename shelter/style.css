@@ -877,6 +877,24 @@ h1 {
         flex-direction: column-reverse;
         gap: 59px;
     }
+
+    /* footer */
+    
+    .footer{
+        min-height: 639px;
+    }
+
+    .wrapper{
+        justify-content: center;
+    }
+    
+    .footer-container{
+        width: 83.3%;
+        gap: 38px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 8.7%;
+    }
 }
 
 @media((min-width: 640px) and (max-width: 767px)){
@@ -1022,6 +1040,28 @@ h1 {
 
     .donation-desc {
         align-items: center;
+    }
+
+    /* footer */
+    
+    .footer {
+        min-height: 639px;
+    }
+    
+    .wrapper {
+        justify-content: center;
+    }
+    
+    .footer-container {
+        width: 83.3%;
+        gap: 38px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 8.7%;
+    }
+
+    .block-title{
+        font-size: 25px;
     }
 }
 
@@ -1206,6 +1246,41 @@ h1 {
     .donation-img{
         width: 400px;
     }
+
+    /* footer */
+    
+    .footer {
+        min-height: 639px;
+    }
+    
+    .wrapper {
+        justify-content: center;
+    }
+    
+    .footer-container {
+        width: 90%;
+        gap: 38px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 8.7%;
+    }
+    
+    .block-title {
+        font-size: 20px;
+        line-height: 130%;
+    }
+
+    .block-item a{
+        font-size: 15px;
+    }
+
+    .block-icon:not(:last-child){
+        width: 10%;
+    }
+
+    /*.block-icon:last-child {
+        width: 9%;
+    } */
 }
 
 @media(max-width: 430px){
@@ -1464,5 +1539,54 @@ h1 {
 
     .desc-legal-information{
         text-align: justify;
+    }
+
+    /* footer */
+
+    .footer{
+        min-height: 809px;
+    }
+
+    .wrapper{
+        max-width: 300px;
+    }
+
+    .footer-container{
+        flex-direction: column;
+        width: 100%;
+        gap: 41px;
+        padding-bottom: 13.8%;
+    }
+
+    .block-title{
+        font-size: 25px;
+        max-width: 278px;
+        text-align: center;
+        line-height: 130%;
+    }
+
+    .block-title:last-child{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .footer-img{
+        max-width: 260px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .footer-block{
+        width: 100%;
+        gap: 39px; 
+    }
+
+    .footer-block:first-child{
+        align-items: center;
+    }
+
+    .footer-block:last-child .block-title {
+        margin-left: auto;
+        margin-right: auto;
     }
 }
