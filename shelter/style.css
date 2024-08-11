@@ -748,7 +748,219 @@ h1 {
     }
 }
 
-@media((min-width: 768px) and (max-width: 1279px)) {
+@media((min-width: 769px) and (max-width: 1279px)) {
+
+    /* header */
+
+    body {
+        min-width: 768px;
+        width: 100%;
+    }
+
+    .header {
+        min-height: 1165px;
+        padding-top: 4%;
+    }
+
+    .header-top {
+        padding: 0 4%;
+    }
+
+    .header-not-only {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        min-height: 1015px;
+        margin: 7.8% 0 0 0;
+    }
+
+    .header-not-only img {
+        max-width: 569px;
+        margin-left: 18%;
+
+    }
+
+    .not-only-desc{
+        max-width: 90%;
+        text-align: center;
+    }
+
+    .not-only-desc h1{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .not-only-button {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* about */
+
+    .about-shelter {
+        min-height: 1048px;
+        flex-direction: column-reverse
+    }
+
+    .about-shelter {
+        gap: 52px;
+    }
+
+    .about-shelter-img {
+        margin-bottom: 3.6%;
+    }
+
+    .about-shelter-desc {
+        gap: 24px;
+        margin-top: 0.8%;
+        min-width: 90%;
+        text-align: center;
+        height: auto;
+    }
+
+    .about-title{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* our friends */
+
+    .our-friends-card-link:last-child {
+        display: none;
+    }
+
+    .our-friends {
+        padding-bottom: 3%;
+    }
+
+    .our-friends-slider {
+        gap: 12px;
+    }
+
+    .our-friends-items {
+        gap: 40.2px;
+    }
+
+    /* help */
+
+    .help {
+        min-height: 779px;
+    }
+
+    .help-desc {
+        column-gap: 24px;
+        justify-content: space-between;
+        max-width: 630px;
+    }
+
+    .help-item:first-child {
+        padding-left: 7%;
+    }
+
+    .help-item:nth-child(3) {
+        padding-right: 8.7%;
+        padding-left: 2%;
+    }
+
+    .help-item:nth-child(4) {
+        padding-left: 1.3%;
+    }
+
+    .help-item:nth-child(5) {
+        padding-right: 5%;
+    }
+
+    .help-item:nth-child(6) {
+        padding-right: 6.4%;
+    }
+
+    .help-item:nth-child(7) {
+        padding-left: 5.4%;
+    }
+
+    .help-item:nth-child(8) {
+        padding-left: 3.2%;
+    }
+
+    .help-item:last-child {
+        padding-right: 2.1%;
+    }
+
+    /* donation */
+
+    .container-donation {
+        min-height: 783px;
+    }
+
+    .donation {
+        flex-direction: column-reverse;
+        gap: 59px;
+    }
+
+    .donation-desc{
+        width: 100%;
+        text-align: center;
+    }
+
+    .desc-bank-title, .desc-card-number{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* footer */
+
+    .footer {
+        min-height: 639px;
+    }
+
+    .wrapper {
+        justify-content: center;
+    }
+
+    .footer-container {
+        width: 83.3%;
+        gap: 38px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 8.7%;
+    }
+
+    /* Pets page header */
+
+    .header-pets {
+        margin: 0 4% 0 4%;
+    }
+
+    .header-nav-pets {
+        padding-bottom: 2.3%;
+    }
+
+    /* Pets page Our friends */
+
+    .pets-items {
+        row-gap: 30px;
+    }
+
+    .pets-items a:nth-child(7),
+    .pets-items a:last-child {
+        display: none;
+    }
+
+    .container-pets {
+        min-height: 1733px;
+        padding: 80px 0 0px 0;
+        gap: 22px;
+    }
+
+    .our-frends-card-pets {
+        gap: 9.1px;
+    }
+
+    .our-pets-contr {
+        padding-top: 1.3%;
+    }
+}
+
+@media((min-width: 768px) and (max-width: 768px)) {
 
     /* header */
 
@@ -1115,6 +1327,7 @@ h1 {
     
     .pets-items {
         row-gap: 30px;
+        max-width: 100%;
     }
     
     .pets-items a:nth-child(7),
@@ -1369,6 +1582,7 @@ h1 {
     .pets-items {
         row-gap: 30px;
         display: flex;
+        margin: 0 2%;
     }
     
     .pets-items a:nth-child(7),
