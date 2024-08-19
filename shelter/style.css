@@ -26,9 +26,8 @@ body {
 /* header */
 
 .header {
-    background-image: url(./assets/img/noise_transparent.png);
-    background: linear-gradient(298deg, rgba(33, 31, 32, 1) 37%, rgba(91, 72, 58, 1) 100%, rgba(38, 36, 37, 1) 100%);
-    
+    background: linear-gradient(298deg, rgba(33, 31, 32, 1) 37%, rgba(91, 72, 58, 1) 100%, rgba(38, 36, 37, 1) 100%), url(./assets/img/noise_transparent@2x.png);
+    background-blend-mode: multiply;
     min-height: 908px;
     padding-top: 2.4%;
 }
@@ -588,7 +587,8 @@ h1 {
 /* footer */
 
 .footer {
-    background: linear-gradient(298deg, rgba(33, 31, 32, 1) 37%, rgba(91, 72, 58, 1) 100%, rgba(38, 36, 37, 1) 100%);
+    background: linear-gradient(298deg, rgba(33, 31, 32, 1) 37%, rgba(91, 72, 58, 1) 100%, rgba(38, 36, 37, 1) 100%), url(./assets/img/noise_transparent@2x.png);
+    background-blend-mode: multiply;
     min-height: 350px;
     display: flex;
     align-items: flex-end;
