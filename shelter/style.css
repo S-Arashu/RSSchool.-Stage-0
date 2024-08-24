@@ -1,3 +1,25 @@
+@keyframes open {
+
+    from {
+        right: -320px;
+    }
+
+    to {
+        right: 0;
+    }
+    
+}
+
+@keyframes close {
+    from {
+        right: 0;
+    }
+    
+    to {
+        right: -320px;
+    }
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -15,6 +37,15 @@ body {
     margin: 0 auto 0 auto;
     min-height: 100vh;
     transition: .3s ease-in-out;
+}
+
+.dark-block{
+    /* filter: brightness(0.3); */
+    background-color: #000000c2;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
 }
 
 .container {
@@ -1188,10 +1219,11 @@ h1 {
     .header-hamburger__menu {
         display: flex;
         align-items: center;
+        z-index: 2;
     }
     
     .hamburger__menu {
-        padding: 0 0 41% 0;
+        margin: 0 0 41% 0;
         cursor: pointer;
         display: flex;
         flex-direction: column;
@@ -1397,10 +1429,11 @@ h1 {
     .header-hamburger__menu {
         display: flex;
         align-items: center;
+        z-index: 2;
     }
     
     .hamburger__menu {
-        padding: 0 0 41% 0;
+        margin: 0 0 41% 0;
         cursor: pointer;
         display: flex;
         flex-direction: column;
@@ -1652,10 +1685,11 @@ h1 {
     .header-hamburger__menu {
         display: flex;
         align-items: center;
+        z-index: 2;
     }
     
     .hamburger__menu {
-        padding: 0 0 41% 0;
+        margin: 0 0 41% 0;
         cursor: pointer;
         display: flex;
         flex-direction: column;
