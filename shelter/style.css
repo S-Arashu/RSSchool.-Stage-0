@@ -206,21 +206,18 @@ body {
     background-color: #F1CDB3;
 } 
 
-.nav-item-active {
-    filter: brightness(100%);
-    pointer-events: none;
-}
-
-/* .nav-item-active:hover {
+.nav-item-active .nav-link {
+    /* filter: brightness(100%); */
+    /* pointer-events: none; */
     cursor: default;
-} */
+}
 
 .nav-item:hover::after,
 .nav-item:focus::after {
     width: 100%;
 }
 
-.nav-link:hover {
+.nav-link:hover:not(.nav-item-active .nav-link) {
     filter: brightness(100%);
 }
 

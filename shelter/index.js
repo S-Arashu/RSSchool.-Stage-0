@@ -1,5 +1,8 @@
 'use strict';
 
+// let active = document.querySelector('.nav-item-active');
+//     active.disabled = true;
+
 let body = document.querySelector('body');
 let modal = document.getElementsByClassName('modal_window');
 let hamb = document.querySelectorAll('.hamb');
@@ -15,7 +18,7 @@ function open (){
         div.setAttribute('id', 'modal_menu');
         div.innerHTML = `
         <ul class="header-item-modal">
-            <li class="nav-item modal-item nav-item-active"><a href="#" class="nav-link modal">About the shelter</a></li>
+            <li class="nav-item modal-item nav-item-active""><a href="#" class="nav-link modal">About the shelter</a></li>
             <li class="nav-item modal-item"><a href="./Pages/Our-pets-page.html" class="nav-link modal">Our pets</a></li>
             <li class="nav-item modal-item"><a href="#help" class="nav-link modal">Help the shelter</a></li>
             <li class="nav-item modal-item"><a href="#footer" class="nav-link modal">Contacts</a></li>
@@ -44,6 +47,8 @@ function open (){
         let nav = document.querySelectorAll('.modal');
         let modal_menu = document.querySelector('.header-item-modal');
         let item = document.querySelectorAll('.modal-item');
+        // let active = document.querySelector('.nav-item-active');
+        // active.onclick = animation_close;
         
         modal_menu.style.cssText = `
 
@@ -107,7 +112,7 @@ function animation_close (){
 
 body.onclick = function (event){
     let target = event.target;
-    console.log(target.tagName, this)
+    console.dir(target, this)
     if (modal.length != 0) {
         if (target.id !== 'menu' && target.tagName !== 'UL' && target.tagName !== 'SPAN'){
             console.log(target.tagName)
