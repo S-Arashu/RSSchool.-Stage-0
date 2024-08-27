@@ -1,5 +1,129 @@
 'use strict';
 
+let path = './pets.json';
+
+// let response = await fetch(path);
+// if(response.ok){
+//     let petsInfo = await response.json();
+//     console.log(petsInfo[1].breed)
+// } else {
+//     console.log("Ошибка HTTP: " + response.status);
+// }
+
+// function random(first, last) {
+//   let num = first + Math.random() * (last + 1 - first);
+//     return Math.floor(num);
+// }
+
+function random(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+        return arr;
+    }
+}
+
+    let bt_l = document.querySelector('.arrow-left');
+    let bt_r = document.querySelectorAll('.arrow-right')[0];
+
+    let count = 0;
+    let numOfClick = 0;
+    // bt_r.addEventListener('click', () => count += 130);
+    // bt_r.onclick = function(){
+    //     for(let li of document.querySelectorAll('li')) {
+    //     li.style.right = count +'px';
+    // }
+    // }
+    
+    // bt_l.addEventListener('click', () => count -= 130);
+    // bt_l.onclick = function () {
+    //     for(let li of document.querySelectorAll('li')) {
+    //         li.style.right = count +'px';
+    //     }
+    
+    // }
+fetch(path)
+.then(response => response.json())
+.then(petsInfo => {
+    let listOfCard = random(petsInfo);
+    function createSlider(){
+    for (let card of listOfCard){
+        let wrapperForSlider = document.querySelector('.our-friends-new-block');
+        let wrapper = document.querySelector('.our-friends-items');
+        let petCard = document.createElement('a');
+        petCard.classList.add('our-friends-card-link');
+        petCard.setAttribute('href', '#');
+        wrapper.prepend(petCard);
+        // wrapperForSlider.prepend(petCard);
+        petCard.innerHTML = `
+            <div class="our-friends-card">
+                <img src=${card.img} alt=${card.name} class="card-img">
+                <p class="card-title">${card.name}</p>
+                <div class="card-button"><span class="card-button-link">Learn more</span></div>
+            </div>
+        `
+
+        let petCard_new = document.createElement('a');
+        petCard_new.classList.add('our-friends-card-link');
+        petCard_new.setAttribute('href', '#');
+        wrapperForSlider.prepend(petCard_new);
+        petCard_new.innerHTML = `
+            <div class="our-friends-card">
+                <img src=${card.img} alt=${card.name} class="card-img">
+                <p class="card-title">${card.name}</p>
+                <div class="card-button"><span class="card-button-link">Learn more</span></div>
+            </div>
+        `
+    }    
+    }
+
+    createSlider();
+
+        bt_r.addEventListener('click', () => count += 1090);
+        bt_r.onclick = function(){
+            for(let item of document.querySelectorAll('.our-friends-card-link')) {
+            item.style.right = count +'px';
+            
+            // if(count > 1090){
+            //     createSlider();
+            // }
+        }
+        numOfClick++;
+            if(numOfClick > 2){
+        listOfCard = random(listOfCard);
+        console.log(listOfCard)
+        console.log(numOfClick)
+        numOfClick = 0;
+    }
+        }
+    
+        bt_l.addEventListener('click', () => count -= 1090);
+        bt_l.onclick = function () {
+            for(let item of document.querySelectorAll('.our-friends-card-link')) {
+                item.style.right = count +'px';
+                numOfClick++;
+                if(numOfClick > 2){
+        listOfCard = random(petsInfo);
+    }
+                // if(count < 0){
+                //     createSlider();
+                // }
+            }
+    
+        }    
+    
+    
+//     addEventListener("resize", (event) => {
+//     if(body.offsetWidth >= 1280){
+
+// }
+// });
+
+});
+
+
+// burger
+
 let body = document.querySelector('body');
 let modal = document.getElementsByClassName('modal_window');
 let hamb = document.querySelectorAll('.hamb');
@@ -158,6 +282,11 @@ addEventListener("resize", (event) => {
     setTimeout(() => modal[0].remove(), 300);
 }
 });
+
+// slider Main
+
+
+
 
 
 // console.log(`
