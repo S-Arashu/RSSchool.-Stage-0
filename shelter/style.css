@@ -455,6 +455,53 @@ h1 {
     overflow: hidden;
 }
 
+.our-friends-carousel{
+    display: flex;
+    position: relative;
+    left: -990px;
+}
+
+.our-pets-items {
+    gap: 90px;
+    display: flex;
+    position: relative;
+    transition: .3s ease-in-out;
+}
+
+.id{
+    display: none;
+}
+
+@keyframes move-right {
+    from {
+        left: -990px;
+    }
+
+    to {
+        left: -1980px;
+    }
+}
+
+.transition-right {
+    animation-name: move-right;
+    animation-duration: 1s;
+}
+
+@keyframes move-left {
+    from {
+        left: -990px;
+    }
+
+    to {
+        left: 0px;
+    }
+}
+
+.transition-left {
+    animation-name: move-left;
+    animation-duration: 1s;
+}
+
 .our-friends-button {
     border-radius: 100px;
     background-color: #F1CDB3;
@@ -703,9 +750,9 @@ h1 {
     background-color: #F1CDB3;
 }
 
-.our-friends-card-link {
+/* .our-friends-card-link {
     position: relative;
-}
+} */
 
 .container-pets {
     display: flex;

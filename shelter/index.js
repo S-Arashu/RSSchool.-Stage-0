@@ -10,12 +10,13 @@ let path = './pets.json';
 //     console.log("Ошибка HTTP: " + response.status);
 // }
 
-// function random(first, last) {
+// function createArr(first, last) {
 //   let num = first + Math.random() * (last + 1 - first);
 //     return Math.floor(num);
 // }
 
 function random(arr) {
+    arr.sort(() => Math.random() - 0.5);
     for (let i = arr.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
         [arr[i], arr[j]] = [arr[j], arr[i]];
@@ -25,9 +26,12 @@ function random(arr) {
 
     let bt_l = document.querySelector('.arrow-left');
     let bt_r = document.querySelectorAll('.arrow-right')[0];
+    let wrapper = document.querySelector('.our-friends-carousel');
+    let wrapperForSlider = document.querySelector('.our-friends-new-block');
 
     let count = 0;
-    let numOfClick = 0;
+    let numOfClick_l = 0;
+    let numOfClick_r = 0;
     // bt_r.addEventListener('click', () => count += 130);
     // bt_r.onclick = function(){
     //     for(let li of document.querySelectorAll('li')) {
@@ -45,72 +49,170 @@ function random(arr) {
 fetch(path)
 .then(response => response.json())
 .then(petsInfo => {
-    let listOfCard = random(petsInfo);
-    function createSlider(){
-    for (let card of listOfCard){
-        let wrapperForSlider = document.querySelector('.our-friends-new-block');
-        let wrapper = document.querySelector('.our-friends-items');
-        let petCard = document.createElement('a');
-        petCard.classList.add('our-friends-card-link');
-        petCard.setAttribute('href', '#');
-        wrapper.prepend(petCard);
-        // wrapperForSlider.prepend(petCard);
-        petCard.innerHTML = `
-            <div class="our-friends-card">
-                <img src=${card.img} alt=${card.name} class="card-img">
-                <p class="card-title">${card.name}</p>
-                <div class="card-button"><span class="card-button-link">Learn more</span></div>
-            </div>
-        `
-
-        let petCard_new = document.createElement('a');
-        petCard_new.classList.add('our-friends-card-link');
-        petCard_new.setAttribute('href', '#');
-        wrapperForSlider.prepend(petCard_new);
-        petCard_new.innerHTML = `
-            <div class="our-friends-card">
-                <img src=${card.img} alt=${card.name} class="card-img">
-                <p class="card-title">${card.name}</p>
-                <div class="card-button"><span class="card-button-link">Learn more</span></div>
-            </div>
-        `
-    }    
-    }
-
-    createSlider();
-
-        bt_r.addEventListener('click', () => count += 1090);
-        bt_r.onclick = function(){
-            for(let item of document.querySelectorAll('.our-friends-card-link')) {
-            item.style.right = count +'px';
-            
-            // if(count > 1090){
-            //     createSlider();
-            // }
-        }
-        numOfClick++;
-            if(numOfClick > 2){
-        listOfCard = random(listOfCard);
-        console.log(listOfCard)
-        console.log(numOfClick)
-        numOfClick = 0;
-    }
-        }
+    let listOfCard;
     
-        bt_l.addEventListener('click', () => count -= 1090);
-        bt_l.onclick = function () {
-            for(let item of document.querySelectorAll('.our-friends-card-link')) {
-                item.style.right = count +'px';
-                numOfClick++;
-                if(numOfClick > 2){
         listOfCard = random(petsInfo);
+    for (let k = 0; k<3; k++){
+        let petCard = document.createElement('div');
+        // console.dir(document.querySelectorAll('.our-pets items .our-friends-card-link'))
+        // console.dir(listOfCard[3])
+        petCard.classList.add('our-pets-items');
+        // petCard.setAttribute('href', '#');
+        wrapper.prepend(petCard);
+        petCard.innerHTML = `
+                            <a class="our-friends-card-link" href="#">
+                                <div class="our-friends-card">
+                                    <p class="id">${listOfCard[k].id}</p>
+                                    <img src=${listOfCard[k].img} alt=${listOfCard[k].name} class="card-img">
+                                    <p class="card-title">${listOfCard[k].name}</p>
+                                    <div class="card-button"><span class="card-button-link">Learn more</span></div>
+                                </div>
+                            </a>
+                            <a class="our-friends-card-link" href="#">
+                                <div class="our-friends-card">
+                                    <p class="id">${listOfCard[k].id}</p>
+                                    <img src=${listOfCard[k+1].img} alt=${listOfCard[k+1].name} class="card-img">
+                                    <p class="card-title">${listOfCard[k+1].name}</p>
+                                    <div class="card-button"><span class="card-button-link">Learn more</span></div>
+                                </div>
+                            </a>
+                            <a class="our-friends-card-link" href="#">
+                                <div class="our-friends-card">
+                                    <p class="id">${listOfCard[k].id}</p>
+                                    <img src=${listOfCard[k+2].img} alt=${listOfCard[k+2].name} class="card-img">
+                                    <p class="card-title">${listOfCard[k+2].name}</p>
+                                    <div class="card-button"><span class="card-button-link">Learn more</span></div>
+                                </div>
+                            </a>
+        `
+        console.dir(document.querySelectorAll('.our-pets-items'))
+
+
     }
+
+    let createSlider = () => {
+        // let petCard_new = document.createElement('a');
+        // petCard_new.classList.add('our-friends-card-link');
+        // petCard_new.setAttribute('href', '#');
+        // wrapperForSlider.prepend(petCard_new);
+        // petCard_new.innerHTML = `
+        //     <div class="our-friends-card">
+        //         <img src=${card.img} alt=${card.name} class="card-img">
+        //         <p class="card-title">${card.name}</p>
+        //         <div class="card-button"><span class="card-button-link">Learn more</span></div>
+        //     </div>
+        // `
+        // console.dir(listOfCard.at(-1))
+        // console.log(listOfCard[7])
+        let petCard = document.createElement('div');
+        petCard.classList.add('our-pets-items');
+        return petCard;
+    }    
+let pets = document.querySelectorAll('.our-pets-items')[1];
+let pets_prev = document.querySelectorAll('.our-pets-items')[0];
+let pets_next = document.querySelectorAll('.our-pets-items')[2];
+// console.log(pets)
+// console.log(pets_prev)
+// console.log(pets_next)
+// let itemLeft = document.querySelector("#item-left");
+// let itemRight = document.querySelector("#item-right");
+
+// const createCardTemplate = () => {
+//     const card = document.createElement("div");
+//     card.classList.add("card");
+//     return card;
+// }
+
+let moveLeft = () => {
+    wrapper.classList.add("transition-left");
+    bt_l.removeEventListener("click", moveLeft);
+    bt_r.removeEventListener("click", moveRight);
+};
+
+let moveRight = () => {
+    wrapper.classList.add("transition-right");
+    bt_l.removeEventListener("click", moveLeft);
+    bt_r.removeEventListener("click", moveRight);
+};
+
+bt_l.addEventListener("click", moveLeft);
+bt_r.addEventListener("click", moveRight);
+
+wrapper.addEventListener("animationend", (animationEvent) => {
+    let changedItem;
+    if (animationEvent.animationName === "move-left") {
+    wrapper.classList.remove("transition-left");
+    changedItem = pets_prev;
+    pets.innerHTML = pets_prev.innerHTML;
+    } else {
+    wrapper.classList.remove("transition-right");
+    changedItem = pets_next;
+    // console.log(pets_next.innerHTML)
+    pets.innerHTML = pets_next.innerHTML;
+    }
+    
+    changedItem.innerHTML = "";
+    for (let i = 0; i < 3; i++) {
+    let card = createSlider();
+    let numOfPet = Math.floor(Math.random() * 8);
+    card.innerHTML = `
+                    <a class="our-friends-card-link" href="#">
+                                <div class="our-friends-card">
+                                    <p class="id">${listOfCard[numOfPet].id}</p>
+                                    <img src=${listOfCard[numOfPet].img} alt=${listOfCard[numOfPet].name} class="card-img">
+                                    <p class="card-title">${listOfCard[numOfPet].name}</p>
+                                    <div class="card-button"><span class="card-button-link">Learn more</span></div>
+                                </div>
+                    </a>
+    `;
+    changedItem.appendChild(card);
+    }
+    
+    bt_l.addEventListener("click", moveLeft);
+    bt_r.addEventListener("click", moveRight);
+})
+    // let pets = document.querySelectorAll('.our-friends-card-link');
+
+        // bt_r.addEventListener('click', () => count += 990);
+        // bt_r.onclick = function(){
+        //     for(let item of document.querySelectorAll('.our-pets-items')) {
+        //     item.style.right = count +'px';
+        //     }
+            // if(count > 1090){
+        //         createSlider();
+            
+        // }
+        // numOfClick_r++;
+        //     if(numOfClick_r == 2){
+                // listOfCard.concat(listOfCard);
+                // console.log(pets)
+                // wrapper.innerHTML = '';
+                // for(let item of pets){
+                //     item.remove()
+                // }
+                // console.log(pets[7])
+                // count = 0;
+                // wrapper.innerHTML = '';
+    //             createSlider();
+    //             numOfClick_r = 0;
+    // }
+    //     }
+    
+        // bt_l.addEventListener('click', () => count -= 990);
+        // bt_l.onclick = function () {
+        //     for(let item of document.querySelectorAll('.our-pets-items')) {
+        //         item.style.right = count +'px';
+        //     }
+        //         numOfClick_l++;
+        //         if(numOfClick_l == 2){
+        //             createSlider();
+        //             numOfClick_l = 0;        
                 // if(count < 0){
                 //     createSlider();
                 // }
-            }
+        //         }
     
-        }    
+        // }    
     
     
 //     addEventListener("resize", (event) => {
