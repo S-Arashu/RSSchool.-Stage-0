@@ -2,19 +2,6 @@
 
 let path = './pets.json';
 
-// let response = await fetch(path);
-// if(response.ok){
-//     let petsInfo = await response.json();
-//     console.log(petsInfo[1].breed)
-// } else {
-//     console.log("Ошибка HTTP: " + response.status);
-// }
-
-// function createArr(first, last) {
-//   let num = first + Math.random() * (last + 1 - first);
-//     return Math.floor(num);
-// }
-
 function random(arr) {
     arr.sort(() => Math.random() - 0.5);
     for (let i = arr.length - 1; i > 0; i--) {
@@ -28,46 +15,36 @@ function random(arr) {
     let bt_r = document.querySelectorAll('.arrow-right')[0];
     let wrapper = document.querySelector('.our-friends-carousel');
     let wrapperForSlider = document.querySelector('.our-friends-new-block');
+    
 
     let count = 0;
     let numOfClick_l = 0;
     let numOfClick_r = 0;
-    // bt_r.addEventListener('click', () => count += 130);
-    // bt_r.onclick = function(){
-    //     for(let li of document.querySelectorAll('li')) {
-    //     li.style.right = count +'px';
-    // }
-    // }
-    
-    // bt_l.addEventListener('click', () => count -= 130);
-    // bt_l.onclick = function () {
-    //     for(let li of document.querySelectorAll('li')) {
-    //         li.style.right = count +'px';
-    //     }
-    
-    // }
+
 fetch(path)
 .then(response => response.json())
 .then(petsInfo => {
+    let sliderBlock = [];
+
+    let numOfPet_check = [];
     let listOfCard;
-    let comp = [5,0,3];
+    let comp = [];
+    let cards_active = [];
         listOfCard = random(petsInfo);
     repeat: for (let k = 0; k<3; k++){
         let petCard = document.createElement('div');
         
-        // let p = Math.floor(Math.random() * 6);
-        // if(comp.includes(p)){
-        //     k--
-        //     continue repeat
-        // }
-        // comp.push(p);
+        let p = Math.floor(Math.random() * 6);
+        if(comp.includes(p) || comp.includes(p+1) || comp.includes(p+2)){
+            k--
+            continue repeat
+        }
+        comp.push(p);
+        numOfPet_check.push(p)
+        sliderBlock.push(p);
         console.log(comp)
-        
-        // console.dir(document.querySelectorAll('.our-pets items .our-friends-card-link'))
-        // console.dir(listOfCard[3].id)
-        // console.log(listOfCard[3])
+        console.log(numOfPet_check)
         petCard.classList.add('our-pets-items');
-        // petCard.setAttribute('href', '#');
         wrapper.prepend(petCard);
         petCard.innerHTML = `
                             <a class="our-friends-card-link" href="#">
@@ -95,25 +72,17 @@ fetch(path)
                                 </div>
                             </a>
         `
-        // console.dir(document.querySelectorAll('.our-pets-items'))
-
-
     }
+    bt_l.addEventListener('click', function(event){
+    sliderBlock.length = 0;
+        let elem = this.nextElementSibling.children[0].children[0].children;
+        for (let item of elem){
+            sliderBlock.push(+item.children[0].children[0].innerHTML);
+        }
+    })
+
 
     let createSlider = () => {
-        // let petCard_new = document.createElement('a');
-        // petCard_new.classList.add('our-friends-card-link');
-        // petCard_new.setAttribute('href', '#');
-        // wrapperForSlider.prepend(petCard_new);
-        // petCard_new.innerHTML = `
-        //     <div class="our-friends-card">
-        //         <img src=${card.img} alt=${card.name} class="card-img">
-        //         <p class="card-title">${card.name}</p>
-        //         <div class="card-button"><span class="card-button-link">Learn more</span></div>
-        //     </div>
-        // `
-        // console.dir(listOfCard.at(-1))
-        // console.log(listOfCard[7])
         let petCard = document.createElement('a');
         petCard.classList.add('our-friends-card-link');
         petCard.setAttribute('href', '#');
@@ -122,7 +91,6 @@ fetch(path)
 let pets = document.querySelectorAll('.our-pets-items')[1];
 let pets_prev = document.querySelectorAll('.our-pets-items')[0];
 let pets_next = document.querySelectorAll('.our-pets-items')[2];
-// console.log(pets)
 let pets_1;
 let pets_2;
 let pets_3;
@@ -132,30 +100,11 @@ let pets_3;
 let pets_1_active = pets.children[0].children[0].children[0].innerHTML;
 let pets_2_active = pets.children[1].children[0].children[0].innerHTML;
 let pets_3_active = pets.children[2].children[0].children[0].innerHTML;
-// console.log(pets.children[0].children[0].children[0].innerHTML);        
-// console.log(pets.children[1].children[0].children[0].innerHTML);
-// console.log(pets.children[2].children[0].children[0].innerHTML);
-// console.log(pets_1);        
-// console.log(pets_2);
-// console.log(pets_3);
 
 let petsState;
-// console.log(pets_1)
-// console.log(pets_prev)
-// console.log(pets_next)
-// let itemLeft = document.querySelector("#item-left");
-// let itemRight = document.querySelector("#item-right");
-
-// const createCardTemplate = () => {
-//     const card = document.createElement("div");
-//     card.classList.add("card");
-//     return card;
-// }
-
 let numOfPet;
 let id;
 let numOfPet_after = [];
-let cards_active = [];
 
 let moveLeft = () => {
     cards_active.length = 0;
@@ -168,31 +117,17 @@ let moveLeft = () => {
     cards_active.push(+pets_1);
     cards_active.push(+pets_2);
     cards_active.push(+pets_3);
-//     console.log(pets_1);
-// console.log(pets_2);
-// console.log(pets_3);
-    // pets_1 = pets_next.children[0].children[0].children[0].innerHTML;
-    // console.log(pets_1)
-    // id = document.querySelectorAll('.id')
-    // numOfClick_r = 0;
-    // numOfPet_check_aside.length = 0;
+
     numOfClick_l++;
     wrapper.classList.add("transition-left");
     bt_l.removeEventListener("click", moveLeft);
     bt_r.removeEventListener("click", moveRight);
     if(numOfClick_l < 2){
-        // console.log(pets_prev)
         pets_prev.innerHTML = petsState || pets_prev.innerHTML;
         numOfClick_r = 0;
 
     }
-    // numOfPet_check_aside.push(+id[0].innerHTML);
-    //     numOfPet_check_aside.push(+id[1].innerHTML);
-    //     numOfPet_check_aside.push(+id[2].innerHTML);
-        // console.log(id)
 };
-
-let pets_active = [];
 
 let moveRight = () => {
     cards_active.length = 0;
@@ -205,59 +140,27 @@ let moveRight = () => {
     cards_active.push(+pets_1);
     cards_active.push(+pets_2);
     cards_active.push(+pets_3);
-    console.log(cards_active);
-//     // console.log(numOfPet_after.at(-1));
-    console.log(pets_1);
-console.log(pets_2);
-console.log(pets_3);
-console.log(pets_1_active);
-console.log(pets_2_active);
-console.log(pets_3_active);
-    // numOfClick_l = 0;
-    // numOfPet_check_aside.length = 0;
-    // id = document.querySelectorAll('.id')
     numOfClick_r++;
     wrapper.classList.add("transition-right");
     bt_l.removeEventListener("click", moveLeft);
     bt_r.removeEventListener("click", moveRight);
     if(numOfClick_r < 2){
-        // console.log(pets_next)
         pets_next.innerHTML = petsState || pets_next.innerHTML;
         numOfClick_l = 0;
-
     };
-    
-    // numOfPet_check_aside.push(+id[6].innerHTML);
-    //     numOfPet_check_aside.push(+id[7].innerHTML);
-    //     numOfPet_check_aside.push(+id[8].innerHTML);
-
-    
 };
-let numOfPet_check = [3,5,7];
+
 bt_l.addEventListener("click", moveLeft);
 bt_r.addEventListener("click", moveRight);
-// console.dir(pets_next.children[0].children[0].children[0].innerHTML)
 
 wrapper.addEventListener("animationend", (animationEvent) => {
-    // let petsState;
     
     let numOfPet_check_aside = [];
     let changedItem;
-    // console.log(pets.innerHTML)
     if (animationEvent.animationName === "move-left") {
-        // id = document.querySelectorAll('.id')
-        // console.log(id)
-        // console.log(numOfClick_l)
     wrapper.classList.remove("transition-left");
     changedItem = pets_prev;
     petsState = pets.innerHTML;
-    // console.log(document.querySelectorAll('.our-pets-items'))
-    // if(numOfClick_l < 2){
-    //     console.log(numOfClick_l + "left")
-    //     pets_prev.innerHTML = petsState;
-    //     numOfClick_r = 0;
-
-    // }
     pets.innerHTML = pets_prev.innerHTML;
     id = document.querySelectorAll('.id');
         numOfPet_check_aside.length = 0;
@@ -268,35 +171,14 @@ wrapper.addEventListener("animationend", (animationEvent) => {
         numOfPet_check_aside.push(+id[0].innerHTML);
         numOfPet_check_aside.push(+id[1].innerHTML);
         numOfPet_check_aside.push(+id[2].innerHTML);
-    
     } else {
-        console.log(numOfPet_check)
-        // console.log(numOfClick_r)
-        // id = document.querySelectorAll('.id')
-        // pets_1 = pets_next.children[0].children[0].children[0].innerHTML;
-        // pets_2 = pets_next.children[1].children[0].children[0].innerHTML;
-        // pets_3 = pets_next.children[2].children[0].children[0].innerHTML;
-//         console.log(pets_1);
-// console.log(pets_2);
-// console.log(pets_3);
-        
-    // console.log(pets_1)
     wrapper.classList.remove("transition-right");
     changedItem = pets_next;
-    // console.log(pets_next.innerHTML)
     petsState = pets.innerHTML;
-        // console.log(numOfPet_after);
-    //     if(numOfClick_r < 2){
-    //     console.log(numOfClick_r + "right")
-    //     pets_next.innerHTML = petsState;
-    //     numOfClick_l = 0;
-
-    // }
 
     pets.innerHTML = pets_next.innerHTML;
     
     id = document.querySelectorAll('.id');
-        // console.log(id)
         numOfPet_check_aside.length = 0;
         if(numOfPet_check.length == 6){
         numOfPet_check.splice(0,3);
@@ -306,102 +188,21 @@ wrapper.addEventListener("animationend", (animationEvent) => {
         numOfPet_check_aside.push(+id[7].innerHTML);
         numOfPet_check_aside.push(+id[8].innerHTML);
     }
-    // if(numOfClick_l == 2 || numOfClick_r == 2){
-    //     numOfPet_check_aside.length = 0;
-    // }
-    changedItem.innerHTML = "";
-    // let id = document.querySelectorAll('.id');
-    // let list = 
-    // console.log(list_active[1].innerHTML)
-    // check: for(let i=3; i<6; i++){
-    //     for(let j=0; j<3; j++){
-    //         if(list_active[i] == list_left[j]){
-    //             id[j].innerHTML = j+1;
-    //             console.log(id[j].innerHTML)
-    //             break check
-    //         }
-    //     }
-    // }
-    // console.dir(pets_next.children[0].children[0].children[0].innerHTML)
-    
-    console.log(cards_active);
-    // console.log(numOfPet_after.at(-1));
-    console.log(pets_1);
-console.log(pets_2);
-console.log(pets_3);
 
-//     let pets_1 = pets_next.children[0].children[0].children[0].innerHTML;
-// let pets_2 = pets_next.children[1].children[0].children[0].innerHTML;
-// let pets_3 = pets_next.children[2].children[0].children[0].innerHTML;
+    changedItem.innerHTML = "";
+
 check:    for (let i = 0; i < 3; i++) {
     let card = createSlider();
-    // console.log(numOfPet_check)
-    // id = document.querySelectorAll('.id');
-    // console.log(id)
+
     numOfPet = Math.floor(Math.random() * 8);
-    console.log(cards_active);
-    console.log(numOfPet)
-    
-    
-// console.log(pets_2_after)
-// console.log(pets_3_after)
+
         if(numOfPet_check.includes(numOfPet)){
-        // numOfPet = Math.floor(Math.random() * 8);
-        // || numOfPet_check_aside.includes(+pets_1_after) || numOfPet_check_aside.includes(+pets_2_after) || numOfPet_check_aside.includes(+pets_3_after)
         i--;
         continue check;
     }
-// console.log(cards_active.includes(numOfPet));
-    // if(cards_active.includes(numOfPet)){
-    //     // pets_1_active = Math.floor(Math.random() * 8);
-    //     // pets_2_active = Math.floor(Math.random() * 8);
-    //     // pets_3_active = Math.floor(Math.random() * 8);
-        
-    //     // console.log(pets_2_active);
-    //     // console.log(pets_3_active);
-    //     i--;
-    //     continue check;
-    // }
-//     console.log(numOfPet_check_aside.includes(+pets_1))
-// console.log(numOfPet_check_aside.includes(+pets_2))
-// console.log(numOfPet_check_aside.includes(+pets_3))
-// console.log(numOfPet_check.includes(+pets_1))
-// console.log(numOfPet_check.includes(+pets_2))
-// console.log(numOfPet_check.includes(+pets_3))
 
-// let pets_1 = pets.children[0].children[0].children[0].innerHTML;
-// let pets_2 = pets.children[1].children[0].children[0].innerHTML;
-// let pets_3 = pets.children[2].children[0].children[0].innerHTML;
-// console.dir(pets_1)
-// console.dir(pets_2)
-// console.dir(pets_3)
-    // for(let j=0; j<numOfPet_check_aside.length; i++){
-    //     console.log(numOfPet_check)
-    //     console.log(numOfPet_check_aside)
-        // for(let j=0; j<numOfPet_check_aside.length; j++){
-            // if(numOfPet_check_aside[0] == numOfPet || numOfPet_check_aside[1] == numOfPet || numOfPet_check_aside[2] == numOfPet){
-            //     continue check;
-            // }
-        // }
-    // }
-    
     numOfPet_check.push(numOfPet);
     
-    // console.log(numOfPet_check)
-    // console.log(numOfPet_check_aside.join(''))
-
-    // for(let i=0; i<numOfPet_check_aside.length; i++){
-    //     console.log(numOfPet_check)
-    //     console.log(numOfPet_check_aside)
-    //     for(let j=0; j<numOfPet_check_aside.length; j++){
-    //         if(numOfPet_check_aside[i] == numOfPet){
-    //             continue check;
-    //         }
-    //     }
-    // }
-    // console.log(numOfPet);
-    // console.log(numOfPet_check)
-    //     console.log(numOfPet_check_aside)
     card.innerHTML = `
                     <div class="our-friends-card">
                         <p class="id">${listOfCard[numOfPet].id}</p>
@@ -410,278 +211,27 @@ check:    for (let i = 0; i < 3; i++) {
                         <div class="card-button"><span class="card-button-link">Learn more</span></div>
                     </div>
     `;
-
-
     
     changedItem.appendChild(card);
-    // console.log(listOfCard[numOfPet].id, listOfCard[numOfPet].name)
-    // console.log(card)
+
+let itemDelete = document.querySelectorAll('.our-pets-items');
+        if(body.offsetWidth > 1099){
+            itemDelete[1].lastElementChild.classList.remove('delete');
+        }
+        if(body.offsetWidth >= 768 && body.offsetWidth <= 1099){
+            itemDelete[1].lastElementChild.classList.add('delete');
+        console.dir(itemDelete[0].children)
+    }
+    if(body.offsetWidth < 768){
+        itemDelete[1].lastElementChild.classList.add('delete');
+            itemDelete[1].children[1].classList.add('delete');
+        console.dir(itemDelete[0].children)
+    }
     }
 
-//     check:    for (let i = 0; i < 3; i++) {
-//     let card = createSlider();
-    console.log(numOfPet_check)
-//     // id = document.querySelectorAll('.id');
-//     // console.log(id)
-//     numOfPet = Math.floor(Math.random() * 8);
-//     // console.dir(pets_next.children[0].children[0])
-//     // console.log(pets_next.children[0].children[0].children[0].innerHTML)
-// //     console.log(numOfPet_check_aside)
-//     // console.log(numOfPet_after)
-// // console.log(pets_2_after)
-// // console.log(pets_3_after)
-//         if(numOfPet_check.includes(numOfPet) || numOfPet_check_aside.includes(numOfPet)){
-//         // numOfPet = Math.floor(Math.random() * 8);
-//         // || numOfPet_check_aside.includes(+pets_1_after) || numOfPet_check_aside.includes(+pets_2_after) || numOfPet_check_aside.includes(+pets_3_after)
-//         i--;
-//         continue check;
-//     }
-//     console.log(numOfPet_check_aside.includes(+pets_1))
-// console.log(numOfPet_check_aside.includes(+pets_2))
-// console.log(numOfPet_check_aside.includes(+pets_3))
-// console.log(numOfPet_check.includes(+pets_1))
-// console.log(numOfPet_check.includes(+pets_2))
-// console.log(numOfPet_check.includes(+pets_3))
-
-// // let pets_1 = pets.children[0].children[0].children[0].innerHTML;
-// // let pets_2 = pets.children[1].children[0].children[0].innerHTML;
-// // let pets_3 = pets.children[2].children[0].children[0].innerHTML;
-// // console.dir(pets_1)
-// // console.dir(pets_2)
-// // console.dir(pets_3)
-//     // for(let j=0; j<numOfPet_check_aside.length; i++){
-//     //     console.log(numOfPet_check)
-//     //     console.log(numOfPet_check_aside)
-//         // for(let j=0; j<numOfPet_check_aside.length; j++){
-//             // if(numOfPet_check_aside[0] == numOfPet || numOfPet_check_aside[1] == numOfPet || numOfPet_check_aside[2] == numOfPet){
-//             //     continue check;
-//             // }
-//         // }
-//     // }
-    
-//     numOfPet_check.push(numOfPet);
-    
-//     // console.log(numOfPet_check)
-//     // console.log(numOfPet_check_aside.join(''))
-
-//     // for(let i=0; i<numOfPet_check_aside.length; i++){
-//     //     console.log(numOfPet_check)
-//     //     console.log(numOfPet_check_aside)
-//     //     for(let j=0; j<numOfPet_check_aside.length; j++){
-//     //         if(numOfPet_check_aside[i] == numOfPet){
-//     //             continue check;
-//     //         }
-//     //     }
-//     // }
-//     console.log(numOfPet);
-//     console.log(numOfPet_check)
-//         console.log(numOfPet_check_aside)
-//     card.innerHTML = `
-//                     <div class="our-friends-card">
-//                         <p class="id">${listOfCard[numOfPet].id}</p>
-//                         <img src=${listOfCard[numOfPet].img} alt=${listOfCard[numOfPet].name} class="card-img">
-//                         <p class="card-title">${listOfCard[numOfPet].name}</p>
-//                         <div class="card-button"><span class="card-button-link">Learn more</span></div>
-//                     </div>
-//     `;
-
-
-    
-//     changedItem.appendChild(card);
-//     // console.log(listOfCard[numOfPet].id, listOfCard[numOfPet].name)
-//     // console.log(card)
-//     }
-    // console.log(numOfPet_check_aside)
-// console.log(numOfPet_check_aside)
-    
     bt_l.addEventListener("click", moveLeft);
     bt_r.addEventListener("click", moveRight);
-//     pets_1_after = pets_next.children[0].children[0].children[0].innerHTML;
-//         pets_2_after = pets_next.children[1].children[0].children[0].innerHTML;
-//         pets_3_after = pets_next.children[2].children[0].children[0].innerHTML;
-//         numOfPet_after.push(+pets_1_after);
-//         numOfPet_after.push(+pets_2_after);
-//         numOfPet_after.push(+pets_3_after);
-//         console.log(pets);
-// console.log(pets_1_after);        
-// console.log(pets_2_after);
-// console.log(pets_3_after);
-// console.log(numOfPet_after);
-// console.log(numOfPet_check_aside);
-
-//     compare:    for (let i = 0; i < 3; i++) {
-//         if(numOfPet_check_aside.includes(+pets_1_after) || numOfPet_check_aside.includes(+pets_2_after) || numOfPet_check_aside.includes(+pets_3_after)){
-//     // let card = createSlider();
-//     // console.log(numOfPet_check)
-//     // id = document.querySelectorAll('.id');
-//     // console.log(id)
-//     pets_1_after = Math.floor(Math.random() * 8);
-//     pets_2_after = Math.floor(Math.random() * 8);
-//     pets_3_after = Math.floor(Math.random() * 8);
-//     continue compare;
-//     // console.dir(pets_next.children[0].children[0])
-//     // console.log(pets_next.children[0].children[0].children[0].innerHTML)
-// //     console.log(numOfPet_check_aside)
-//     // console.log(numOfPet_after)
-// // console.log(pets_2_after)
-// // console.log(pets_3_after)
-//     //     if(numOfPet_check.includes(numOfPet) || numOfPet_check_aside.includes(numOfPet)){
-//     //     // numOfPet = Math.floor(Math.random() * 8);
-//     //     // || numOfPet_check_aside.includes(+pets_1_after) || numOfPet_check_aside.includes(+pets_2_after) || numOfPet_check_aside.includes(+pets_3_after)
-//     //     i--;
-//     //     continue check;
-//     // }
-// //     console.log(numOfPet_check_aside.includes(+pets_1))
-// // console.log(numOfPet_check_aside.includes(+pets_2))
-// // console.log(numOfPet_check_aside.includes(+pets_3))
-// // console.log(numOfPet_check.includes(+pets_1))
-// // console.log(numOfPet_check.includes(+pets_2))
-// // console.log(numOfPet_check.includes(+pets_3))
-
-// // let pets_1 = pets.children[0].children[0].children[0].innerHTML;
-// // let pets_2 = pets.children[1].children[0].children[0].innerHTML;
-// // let pets_3 = pets.children[2].children[0].children[0].innerHTML;
-// // console.dir(pets_1)
-// // console.dir(pets_2)
-// // console.dir(pets_3)
-//     // for(let j=0; j<numOfPet_check_aside.length; i++){
-//     //     console.log(numOfPet_check)
-//     //     console.log(numOfPet_check_aside)
-//         // for(let j=0; j<numOfPet_check_aside.length; j++){
-//             // if(numOfPet_check_aside[0] == numOfPet || numOfPet_check_aside[1] == numOfPet || numOfPet_check_aside[2] == numOfPet){
-//             //     continue check;
-//             // }
-//         // }
-//     // }
-    
-//     // numOfPet_check.push(numOfPet);
-    
-//     // console.log(numOfPet_check)
-//     // console.log(numOfPet_check_aside.join(''))
-
-//     // for(let i=0; i<numOfPet_check_aside.length; i++){
-//     //     console.log(numOfPet_check)
-//     //     console.log(numOfPet_check_aside)
-//     //     for(let j=0; j<numOfPet_check_aside.length; j++){
-//     //         if(numOfPet_check_aside[i] == numOfPet){
-//     //             continue check;
-//     //         }
-//     //     }
-//     // }
-//     // console.log(numOfPet_check)
-//     //     console.log(numOfPet_check_aside)
-//         }
-//     card.innerHTML = `
-//                     <div class="our-friends-card">
-//                         <p class="id">${listOfCard[numOfPet].id}</p>
-//                         <img src=${listOfCard[numOfPet].img} alt=${listOfCard[numOfPet].name} class="card-img">
-//                         <p class="card-title">${listOfCard[numOfPet].name}</p>
-//                         <div class="card-button"><span class="card-button-link">Learn more</span></div>
-//                     </div>
-//     `;
-
-
-    
-//     // changedItem.appendChild(card);
-//     // console.log(listOfCard[numOfPet].id, listOfCard[numOfPet].name)
-//     // console.log(card)
-    
-// }
-
-// compare: if(numOfPet_check_aside.includes(+pets_1_after) || numOfPet_check_aside.includes(+pets_2_after) || numOfPet_check_aside.includes(+pets_3_after)){
-//     while(numOfPet_check_aside.includes(pets_1_after) || numOfPet_check_aside.includes(pets_2_after) || numOfPet_check_aside.includes(pets_3_after)){
-//         pets_1_after = Math.floor(Math.random() * 8);
-//     pets_2_after = Math.floor(Math.random() * 8);
-//     pets_3_after = Math.floor(Math.random() * 8);
-//     }
-// console.log(numOfPet_check_aside.includes(+pets_1_after), numOfPet_check_aside.includes(+pets_2_after), numOfPet_check_aside.includes(+pets_3_after))
-    
-// // if(numOfPet_check_aside.includes(pets_1_after) || numOfPet_check_aside.includes(pets_2_after) || numOfPet_check_aside.includes(pets_3_after)){
-// // console.log(numOfPet_check_aside.includes(+pets_1_after), numOfPet_check_aside.includes(+pets_2_after), numOfPet_check_aside.includes(+pets_3_after))
-// //     break compare;
-// // }
-// console.log(numOfPet_check_aside.includes(+pets_1_after), numOfPet_check_aside.includes(+pets_2_after), numOfPet_check_aside.includes(+pets_3_after))
-//     pets.innerHTML = `
-//                             <a class="our-friends-card-link" href="#">
-//                                 <div class="our-friends-card">
-//                                     <p class="id">${listOfCard[pets_1_after].id}</p>
-//                                     <img src=${listOfCard[pets_1_after].img} alt=${listOfCard[pets_1_after].name} class="card-img">
-//                                     <p class="card-title">${listOfCard[pets_1_after].name}</p>
-//                                     <div class="card-button"><span class="card-button-link">Learn more</span></div>
-//                                 </div>
-//                             </a>
-//                             <a class="our-friends-card-link" href="#">
-//                                 <div class="our-friends-card">
-//                                     <p class="id">${listOfCard[pets_2_after].id}</p>
-//                                     <img src=${listOfCard[pets_2_after].img} alt=${listOfCard[pets_2_after].name} class="card-img">
-//                                     <p class="card-title">${listOfCard[pets_2_after].name}</p>
-//                                     <div class="card-button"><span class="card-button-link">Learn more</span></div>
-//                                 </div>
-//                             </a>
-//                             <a class="our-friends-card-link" href="#">
-//                                 <div class="our-friends-card">
-//                                     <p class="id">${listOfCard[pets_3_after].id}</p>
-//                                     <img src=${listOfCard[pets_3_after].img} alt=${listOfCard[pets_3_after].name} class="card-img">
-//                                     <p class="card-title">${listOfCard[pets_3_after].name}</p>
-//                                     <div class="card-button"><span class="card-button-link">Learn more</span></div>
-//                                 </div>
-//                             </a>
-//         `
-// }
 })
-
-
-
-    // let pets = document.querySelectorAll('.our-friends-card-link');
-
-        // bt_r.addEventListener('click', () => count += 990);
-        // bt_r.onclick = function(){
-        //     for(let item of document.querySelectorAll('.our-pets-items')) {
-        //     item.style.right = count +'px';
-        //     }
-            // if(count > 1090){
-        //         createSlider();
-            
-        // }
-        // numOfClick_r++;
-        //     if(numOfClick_r == 2){
-                // listOfCard.concat(listOfCard);
-                // console.log(pets)
-                // wrapper.innerHTML = '';
-                // for(let item of pets){
-                //     item.remove()
-                // }
-                // console.log(pets[7])
-                // count = 0;
-                // wrapper.innerHTML = '';
-    //             createSlider();
-    //             numOfClick_r = 0;
-    // }
-    //     }
-    
-        // bt_l.addEventListener('click', () => count -= 990);
-        // bt_l.onclick = function () {
-        //     for(let item of document.querySelectorAll('.our-pets-items')) {
-        //         item.style.right = count +'px';
-        //     }
-        //         numOfClick_l++;
-        //         if(numOfClick_l == 2){
-        //             createSlider();
-        //             numOfClick_l = 0;        
-                // if(count < 0){
-                //     createSlider();
-                // }
-        //         }
-    
-        // }    
-    
-    
-//     addEventListener("resize", (event) => {
-//     if(body.offsetWidth >= 1280){
-
-// }
-// });
-
 });
 
 
@@ -914,4 +464,17 @@ addEventListener("resize", (event) => {
 //         расположение и размеры элементов в бургер-меню соответствует макету (центрирование по вертикали и горизонтали элементов меню, расположение иконки). При этом на странице Pets цветовая схема может быть как темная, так и светлая: +2
 //         область, свободная от бургер-меню, затемняется: +2
 //         страница под бургер-меню не прокручивается: +4    
+
+// Реализация слайдера-карусели на странице Main: +34
+//     при нажатии на стрелки происходит переход к новому блоку элементов: +4
+//         смена блоков происходит с соответствующей анимацией карусели (способ выполнения анимации не проверяется): +4
+//         слайдер бесконечен, т.е. можно бесконечно много нажимать влево или вправо, и каждый раз будет прокрутка в эту сторону с новым набором карточек: +4
+//         при переключении влево или вправо прокручивается ровно столько карточек, сколько показывается при текущей ширине экрана (3 для 1280px, 2 для 768px, 1 для 320px): +3 (визуально прокручивается три и две на 320 и 768, по коду - 2 и 1)
+//         каждый новый слайд содержит псевдослучайный набор карточек животных, т.е. формируется из исходных объектов в случайном порядке со следующими условиями:
+//         в текущем блоке слайда карточки с питомцами не повторяются: +4
+//         в следующем блоке нет дублирования карточек с текущим блоком. Например в слайдере из 3 элементов, следующий выезжающий слайд будет содержать 3 (из 8 доступных) новых карточки питомца, таких, каких не было среди 3х карточек на предыдущем уехавшем слайде: +3 (пару раз проскакивают одинаковые)
+//         сохраняется только одно предыдущее состояние. Т.е. при последовательном переходе два раза влево, а потом два раза вправо, мы получим набор карточек, отличный от исходного: +4
+//         при каждой перезагрузке страницы формируется новая последовательность карточек: +2
+//         генерация наборов карточек происходит на основе 8 объектов с данными о животных: +2
+//     при изменении ширины экрана (от 1280px до 320px и обратно), слайдер перестраивается и работает без перезагрузки страницы (набор карточек при этом может как изменяться, так и оставаться тем же, скрывая лишнюю или добавляя недостающую, и сохраняя при этом описанные для слайдера требования): +3 (описано выше)
 // `)

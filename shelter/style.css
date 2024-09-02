@@ -30,6 +30,10 @@ html {
     transition: .3s ease-in-out;
 }
 
+.delete {
+    display: none;
+}
+
 body {
     /* min-width: 1280px;
     width: 100%; */
@@ -459,6 +463,7 @@ h1 {
     display: flex;
     position: relative;
     left: -990px;
+    transition: .3s ease-in-out;
 }
 
 .our-pets-items {
@@ -922,6 +927,34 @@ h1 {
             max-width: 890px;
         }
 
+        .our-friends-carousel{
+            left: -900px;
+        }
+
+        .our-pets-items{
+            gap: 45px;
+        }
+
+        @keyframes move-right {
+            from {
+                left: -900px;
+            }
+        
+            to {
+                left: -1800px;
+            }
+        }
+        
+        @keyframes move-left {
+            from {
+                left: -900px;
+            }
+        
+            to {
+                left: 0px;
+            }
+        }
+
         /* help */
     
         .help {
@@ -1137,6 +1170,35 @@ h1 {
         max-width: 580px;
     }
 
+    .our-friends-carousel {
+        left: -945px;
+        gap: 45px;
+    }
+    
+    .our-pets-items {
+        gap: 45px;
+    }
+    
+    @keyframes move-right {
+        from {
+            left: -945px;
+        }
+    
+        to {
+            left: -1575px;
+        }
+    }
+    
+    @keyframes move-left {
+        from {
+            left: -945px;
+        }
+    
+        to {
+            left: 0px;
+        }
+    }
+
     /* help */
 
     .help {
@@ -1332,6 +1394,35 @@ h1 {
         overflow: hidden;
         max-width: 620px;
     }
+
+        .our-friends-carousel {
+            left: -945px;
+            gap: 45px;
+        }
+    
+        .our-pets-items {
+            gap: 45px;
+        }
+    
+        @keyframes move-right {
+            from {
+                left: -945px;
+            }
+    
+            to {
+                left: -1575px;
+            }
+        }
+    
+        @keyframes move-left {
+            from {
+                left: -945px;
+            }
+    
+            to {
+                left: 0px;
+            }
+        }
 
     /* help */
 
@@ -1568,6 +1659,35 @@ h1 {
         overflow: hidden;
         max-width: 270px;
     }
+
+        .our-friends-carousel {
+            left: -950px;
+            gap: 45px;
+        }
+    
+        .our-pets-items {
+            gap: 45px;
+        }
+    
+        @keyframes move-right {
+            from {
+                left: -950px;
+            }
+    
+            to {
+                left: -1265px;
+            }
+        }
+    
+        @keyframes move-left {
+            from {
+                left: -310px;
+            }
+    
+            to {
+                left: -5px;
+            }
+        }
 
     /* help */
         
