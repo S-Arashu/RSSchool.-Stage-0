@@ -466,6 +466,12 @@ h1 {
     transition: .3s ease-in-out;
 }
 
+.our-pets-carousel {
+    display: flex;
+    position: relative;
+    transition: .3s ease-in-out;
+}
+
 .our-pets-items {
     gap: 90px;
     display: flex;
@@ -787,6 +793,7 @@ h1 {
     column-gap: 40px;
     row-gap: 30px;
     padding: 1% 0 1% 0;
+    max-width: 1200px;
 }
 
 .our-pets-contr {
@@ -804,7 +811,7 @@ h1 {
     font-size: 20px;
     letter-spacing: 1px;
     text-align: center;
-    transition: .3s ease-in-out;
+    transition: .1s ease-in-out;
 }
 
 .num {
@@ -1056,10 +1063,10 @@ h1 {
             row-gap: 30px;
         }
     
-        .pets-items a:nth-child(7),
+        /* .pets-items a:nth-child(7),
         .pets-items a:last-child {
             display: none;
-        }
+        } */
     
         .container-pets {
             min-height: 1733px;
@@ -1167,7 +1174,7 @@ h1 {
     .our-friends-items {
         gap: 40.2px;
         overflow: hidden;
-        max-width: 580px;
+        max-width: 581px;
     }
 
     .our-friends-carousel {
@@ -1299,10 +1306,10 @@ h1 {
         row-gap: 30px;
     }
 
-    .pets-items a:nth-child(7),
+    /* .pets-items a:nth-child(7),
     .pets-items a:last-child {
         display: none;
-    }
+    } */
 
     .container-pets {
         min-height: 1733px;
@@ -1513,10 +1520,10 @@ h1 {
     .pets-items{
         row-gap: 30px;
     }
-
+/* 
     .pets-items a:nth-child(7), .pets-items a:last-child{
         display: none;
-    }
+    } */
 
     .container-pets{
         min-height: 1733px;
@@ -1751,10 +1758,10 @@ h1 {
         max-width: 100%;
     }
     
-    .pets-items a:nth-child(7),
+    /* .pets-items a:nth-child(7),
     .pets-items a:last-child {
         display: none;
-    }
+    } */
     
     .container-pets {
         min-height: 1733px;
@@ -2009,10 +2016,10 @@ h1 {
         margin: 0 2%;
     }
     
-    .pets-items a:nth-child(7),
+    /* .pets-items a:nth-child(7),
     .pets-items a:last-child {
         display: none;
-    }
+    } */
     
     .container-pets {
         min-height: 1733px;
@@ -2372,13 +2379,13 @@ h1 {
         display: flex;
     }
     
-    .pets-items a:nth-child(4),
+    /* .pets-items a:nth-child(4),
     .pets-items a:nth-child(5),
     .pets-items a:nth-child(6),
     .pets-items a:nth-child(7),
     .pets-items a:last-child {
         display: none
-    }
+    } */
     
     .container-pets {
         min-height: 1649px;

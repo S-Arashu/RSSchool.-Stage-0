@@ -1,5 +1,7 @@
 'use strict';
 
+// slider Main
+
 let path = './pets.json';
 
 function random(arr) {
@@ -234,6 +236,874 @@ let itemDelete = document.querySelectorAll('.our-pets-items');
 })
 });
 
+// Pets pagination
+
+let path_pets = '../pets.json';
+let contr = document.querySelector('.our-pets-contr');
+let left = document.querySelector('.left');
+let leftDouble = document.querySelector('.left-double');
+let right = document.querySelector('.right');
+let rightDouble = document.querySelector('.right-double');
+let num = document.querySelector('.num');
+let petsItems = document.querySelector('.pets-items');
+
+// right.disabled = false;
+// rightDouble.disabled = false;
+
+fetch(path_pets)
+.then(response => response.json())
+.then(petsInfo => {
+
+
+
+let listOfPets = [];
+
+// let list_1 = random(petsInfo);
+// let list_2 = random(petsInfo);
+// let list_3 = random(petsInfo);
+// let list_4 = random(petsInfo);
+// let list_5 = random(petsInfo);
+
+// listOfPets = listOfPets.concat(list_1, list_2, list_3, list_4, list_5);
+console.log(right)
+
+for (let j=0; j<6; j++){
+    listOfPets = listOfPets.concat(random(petsInfo));
+}
+console.log(listOfPets)
+
+let iter;
+let i = 0;
+let countPagination = 1;
+let petCards;
+
+// addEventListener("resize", () => {
+//     if(body.offsetWidth >= 1280){
+//         console.log(iter)
+//     petsItems.innerHTML = '';
+//         if(countPagination == 1) {
+//     console.log(countPagination);
+//     countPagination = 1;
+//     i = 0;
+//     iter = 8;
+//     num.innerHTML = countPagination;
+//     createCardPets();
+//         } else if (countPagination == 2){
+//     console.log(countPagination);
+//     countPagination = 2;
+//     i = 8;
+//     iter = 16;
+//     num.innerHTML = countPagination;
+//     createCardPets();
+//         } else if (countPagination == 3){
+//     console.log(countPagination);
+//     countPagination = 3;
+//     i = 16;
+//     iter = 24;
+//     num.innerHTML = countPagination;
+//     createCardPets();
+//         } else if (countPagination == 4){
+//     console.log(countPagination);
+//     countPagination = 4;
+//     i = 24;
+//     iter = 32;
+//     num.innerHTML = countPagination;
+//     createCardPets();
+//         } else if (countPagination == 5){
+//     console.log(countPagination);
+//     countPagination = 5;
+//     i = 32;
+//     iter = 40;
+//     num.innerHTML = countPagination;
+//     createCardPets();
+//         } else if (countPagination == 6){
+//     console.log(countPagination);
+//     countPagination = 6;
+//     i = 40;
+//     iter = 48;
+//     num.innerHTML = countPagination;
+//     createCardPets();
+//     right.disabled = true;
+//     rightDouble.disabled = true;
+//         } else {
+//             countPagination = 6;
+//             i = 40;
+//     iter = 48;
+//     num.innerHTML = countPagination;
+//     createCardPets();
+//     right.disabled = true;
+//     rightDouble.disabled = true;
+//         }
+//     }
+//     if(body.offsetWidth >= 630 && body.offsetWidth < 1280){
+//         petsItems.innerHTML = '';
+//         if(countPagination == 1) {
+//     console.log(countPagination);
+//     countPagination = 1;
+//     i = 0;
+//     iter = 6;
+//     num.innerHTML = countPagination;
+//     createCardPets();
+//         } else if (countPagination == 2){
+//     console.log(countPagination);
+//     countPagination = 2;
+//     i = 6;
+//     iter = 12;
+//     num.innerHTML = countPagination;
+//     createCardPets();
+//         } else if (countPagination == 3){
+//     console.log(countPagination);
+//     countPagination = 3;
+//     i = 12;
+//     iter = 18;
+//     num.innerHTML = countPagination;
+//     createCardPets();
+//         } else if (countPagination == 4){
+//     console.log(countPagination);
+//     countPagination = 3;
+//     i = 18;
+//     iter = 24;
+//     num.innerHTML = countPagination;
+//     createCardPets();
+//         } else if (countPagination == 5){
+//     console.log(countPagination);
+//     countPagination = 3;
+//     i = 24;
+//     iter = 30;
+//     num.innerHTML = countPagination;
+//     createCardPets();
+//         } else if (countPagination == 6){
+//     console.log(countPagination);
+//     countPagination = 4;
+//     i = 30;
+//     iter = 36;
+//     num.innerHTML = countPagination;
+//     createCardPets();
+//     right.disabled = false;
+//     rightDouble.disabled = false;
+//         } else {
+//             countPagination = 8;
+//             i = 40;
+//     iter = 48;
+//     num.innerHTML = countPagination;
+//     createCardPets();
+//     right.disabled = true;
+//     rightDouble.disabled = true;
+//         }
+//     }
+//     if(body.offsetWidth < 630){
+//         petsItems.innerHTML = '';
+//         if(countPagination == 1) {
+//     console.log(countPagination);
+//     countPagination = 1;
+//     i = 0;
+//     iter = 3;
+//     num.innerHTML = countPagination;
+//     createCardPets();
+//         } else if (countPagination == 2){
+//     console.log(countPagination);
+//     countPagination = 2;
+//     i = 3;
+//     iter = 9;
+//     num.innerHTML = countPagination;
+//     createCardPets();
+//         } else if (countPagination == 3){
+//     console.log(countPagination);
+//     countPagination = 3;
+//     i = 9;
+//     iter = 12;
+//     num.innerHTML = countPagination;
+//     createCardPets();
+//         } else if (countPagination == 4){
+//     console.log(countPagination);
+//     countPagination = 4;
+//     i = 12;
+//     iter = 15;
+//     num.innerHTML = countPagination;
+//     createCardPets();
+//         } else if (countPagination == 5){
+//     console.log(countPagination);
+//     countPagination = 5;
+//     i = 15;
+//     iter = 18;
+//     num.innerHTML = countPagination;
+//     createCardPets();
+//         } else if (countPagination == 6){
+//     console.log(countPagination);
+//     countPagination = 6;
+//     i = 18;
+//     iter = 21;
+//     num.innerHTML = countPagination;
+//     createCardPets();
+//         } else if (countPagination == 7){
+//     console.log(countPagination);
+//     countPagination = 7;
+//     i = 21;
+//     iter = 24;
+//     num.innerHTML = countPagination;
+//     createCardPets();
+//         } else if (countPagination == 8){
+//     console.log(countPagination);
+//     countPagination = 16;
+//     i = 45;
+//     iter = 48;
+//     num.innerHTML = countPagination;
+//     createCardPets();
+//     right.disabled = true;
+//     rightDouble.disabled = true;
+//         }
+//     //     } else {
+//     //         countPagination = 16;
+//     //         i = 40;
+//     // iter = 48;
+//     // num.innerHTML = countPagination;
+//     // createCardPets();
+//     // right.disabled = true;
+//     // rightDouble.disabled = true;
+//     //     }
+//     }
+
+// console.log(typeof countPagination)
+
+// })
+
+
+
+
+if(body.offsetWidth >= 1280){
+    iter = 8;
+}
+
+if(body.offsetWidth >= 630 && body.offsetWidth < 1280){
+    iter = 6;
+}
+
+if(body.offsetWidth < 630){
+    iter = 3;
+}
+
+right.onclick = () => {
+petsItems.innerHTML = '';
+// petCards.remove();
+
+if(body.offsetWidth >= 1280){
+    i += 8;
+    iter = i + 8;
+}
+
+if(body.offsetWidth >= 630 && body.offsetWidth < 1280){
+    i += 6;
+    iter = i + 6;
+}
+
+if(body.offsetWidth < 630){
+    i += 3;
+    iter = i + 3;
+}
+    
+    // i += 8;
+    // iter = i + 8;
+    ++countPagination;
+    // console.log(iter)
+// console.log(i)
+// console.log(petsItems)
+
+if(body.offsetWidth >= 1280){
+    if (countPagination == 6){
+    right.disabled = true;
+    rightDouble.disabled = true;
+    right.style.cssText = `
+    cursor: not-allowed;
+    background-color: #f6f6f6;
+    `;
+    rightDouble.style.cssText = `
+    cursor: not-allowed;
+    background-color: #f6f6f6;
+    `;
+}
+if (countPagination < 6){
+    left.disabled = false;
+    leftDouble.disabled = false;
+    left.style.cssText = `
+    cursor: pointer;
+    background-color: #F1CDB3;
+    `;
+    leftDouble.style.cssText = `
+    cursor: pointer;
+    background-color: #F1CDB3;
+    `;
+}
+}
+
+if(body.offsetWidth >= 630 && body.offsetWidth < 1280){
+    if (countPagination == 8){
+    right.disabled = true;
+    rightDouble.disabled = true;
+    right.style.cssText = `
+    cursor: not-allowed;
+    background-color: #f6f6f6;
+    `;
+    rightDouble.style.cssText = `
+    cursor: not-allowed;
+    background-color: #f6f6f6;
+    `;
+}
+if (countPagination < 8){
+    left.disabled = false;
+    leftDouble.disabled = false;
+    left.style.cssText = `
+    cursor: pointer;
+    background-color: #F1CDB3;
+    `;
+    leftDouble.style.cssText = `
+    cursor: pointer;
+    background-color: #F1CDB3;
+    `;
+}
+}
+
+if(body.offsetWidth < 630){
+    if (countPagination == 16){
+    right.disabled = true;
+    rightDouble.disabled = true;
+    right.style.cssText = `
+    cursor: not-allowed;
+    background-color: #f6f6f6;
+    `;
+    rightDouble.style.cssText = `
+    cursor: not-allowed;
+    background-color: #f6f6f6;
+    `;
+}
+if (countPagination < 16){
+    left.disabled = false;
+    leftDouble.disabled = false;
+    left.style.cssText = `
+    cursor: pointer;
+    background-color: #F1CDB3;
+    `;
+    leftDouble.style.cssText = `
+    cursor: pointer;
+    background-color: #F1CDB3;
+    `;
+}
+}
+// if (countPagination == 6){
+//     right.disabled = true;
+//     rightDouble.disabled = true;
+//     right.style.cssText = `
+//     cursor: not-allowed;
+//     background-color: #f6f6f6;
+//     `;
+//     rightDouble.style.cssText = `
+//     cursor: not-allowed;
+//     background-color: #f6f6f6;
+//     `;
+// }
+// if (countPagination < 6){
+//     left.disabled = false;
+//     leftDouble.disabled = false;
+//     left.style.cssText = `
+//     cursor: pointer;
+//     background-color: #F1CDB3;
+//     `;
+//     leftDouble.style.cssText = `
+//     cursor: pointer;
+//     background-color: #F1CDB3;
+//     `;
+// }
+
+num.innerHTML = countPagination;
+};
+
+left.onclick = () => {
+petsItems.innerHTML = '';
+// petCards.remove();
+if(body.offsetWidth >= 1280){
+    i -= 8;
+    iter = i + 8;
+}
+
+if(body.offsetWidth >= 630 && body.offsetWidth < 1280){
+    i -= 6;
+    iter = i + 6;
+}
+
+if(body.offsetWidth < 630){
+    i -= 3;
+    iter = i + 3;
+}
+    
+    // i -= 8;
+    // iter = i + 8;
+    --countPagination;
+    console.log(iter)
+console.log(i)
+console.log(petsItems)
+if (countPagination == 1){
+    left.disabled = true;
+    leftDouble.disabled = true;
+    left.style.cssText = `
+    cursor: not-allowed;
+    background-color: #f6f6f6;
+    `;
+    leftDouble.style.cssText = `
+    cursor: not-allowed;
+    background-color: #f6f6f6;
+    `;
+}
+
+if(body.offsetWidth >= 1280){
+    if (countPagination < 6){
+    right.disabled = false;
+    rightDouble.disabled = false;
+    right.style.cssText = `
+    cursor: pointer;
+    background-color: #F1CDB3;
+    `;
+    rightDouble.style.cssText = `
+    cursor: pointer;
+    background-color: #F1CDB3;
+    `;
+}
+}
+
+if(body.offsetWidth >= 630 && body.offsetWidth < 1280){
+    if (countPagination < 8){
+    right.disabled = false;
+    rightDouble.disabled = false;
+    right.style.cssText = `
+    cursor: pointer;
+    background-color: #F1CDB3;
+    `;
+    rightDouble.style.cssText = `
+    cursor: pointer;
+    background-color: #F1CDB3;
+    `;
+}
+}
+
+if(body.offsetWidth < 630){
+    if (countPagination < 16){
+    right.disabled = false;
+    rightDouble.disabled = false;
+    right.style.cssText = `
+    cursor: pointer;
+    background-color: #F1CDB3;
+    `;
+    rightDouble.style.cssText = `
+    cursor: pointer;
+    background-color: #F1CDB3;
+    `;
+}
+}
+// if (countPagination < 6){
+//     right.disabled = false;
+//     rightDouble.disabled = false;
+//     right.style.cssText = `
+//     cursor: pointer;
+//     background-color: #F1CDB3;
+//     `;
+//     rightDouble.style.cssText = `
+//     cursor: pointer;
+//     background-color: #F1CDB3;
+//     `;
+// }
+
+num.innerHTML = countPagination;
+};
+
+rightDouble.onclick = () => {
+    petsItems.innerHTML = '';
+    iter = 48;
+    if(body.offsetWidth >= 1280){
+        i = 40;
+    countPagination = 6;
+}
+
+if(body.offsetWidth >= 630 && body.offsetWidth < 1280){
+    i = 42;
+    countPagination = 8;
+}
+
+if(body.offsetWidth < 630){
+    i = 45;
+    countPagination = 16;
+}
+    // countPagination = 6;
+    left.disabled = false;
+    leftDouble.disabled = false;
+    right.disabled = true;
+    rightDouble.disabled = true;
+    num.innerHTML = countPagination;
+    // console.log(i)
+    // console.log(iter)
+    right.style.cssText = `
+    cursor: not-allowed;
+    background-color: #f6f6f6;
+    `;
+    rightDouble.style.cssText = `
+    cursor: not-allowed;
+    background-color: #f6f6f6;
+    `;
+    left.style.cssText = `
+    cursor: pointer;
+    background-color: #F1CDB3;
+    `;
+    leftDouble.style.cssText = `
+    cursor: pointer;
+    background-color: #F1CDB3;
+    `;
+}
+
+leftDouble.onclick = () => {
+    petsItems.innerHTML = '';
+    if(body.offsetWidth >= 1280){
+    iter = 8;
+}
+
+if(body.offsetWidth >= 630 && body.offsetWidth < 1280){
+    iter = 6;
+}
+
+if(body.offsetWidth < 630){
+    iter = 3;
+}
+    // iter = 8;
+    i = 0;
+    countPagination = 1;
+    left.disabled = true;
+    leftDouble.disabled = true;
+    right.disabled = false;
+    rightDouble.disabled = false;
+    num.innerHTML = countPagination;
+    // console.log(i)
+    // console.log(iter)
+    left.style.cssText = `
+    cursor: not-allowed;
+    background-color: #f6f6f6;
+    `;
+    leftDouble.style.cssText = `
+    cursor: not-allowed;
+    background-color: #f6f6f6;
+    `;
+    right.style.cssText = `
+    cursor: pointer;
+    background-color: #F1CDB3;
+    `;
+    rightDouble.style.cssText = `
+    cursor: pointer;
+    background-color: #F1CDB3;
+    `;
+}
+
+right.addEventListener('click', createCardPets);
+left.addEventListener('click', createCardPets);
+rightDouble.addEventListener('click', createCardPets);
+leftDouble.addEventListener('click', createCardPets);
+// right.addEventListener('mouseenter', () => {
+//     if (right.disabled = false){
+//         console.log(right)
+//         right.style.cssText = `
+//             cursor: pointer;
+//             background-color: #F1CDB3;
+//         `;
+//     }
+// });
+// right.addEventListener('mouseout', () => {
+//     if (right.disabled = false){
+//         right.style.cssText = `
+//             background-color: #f6f6f6;
+//         `;
+//     }
+// });
+
+function createCardPets () {
+    // console.log(i)
+    // console.log(iter)
+
+console.log(countPagination)
+// petsItems.innerHTML = '';
+for(i; i<iter; i++){
+    // console.log(i)
+    // console.log(listOfPets[i].id)
+    petCards = document.createElement('a');
+    petCards.classList.add('our-friends-card-link-pets');
+    petCards.setAttribute('href', '#');
+
+    petCards.innerHTML = `
+                    <div class="our-friends-card">
+                        <p class="id">${listOfPets[i].id}</p>
+                        <img src=${'.' + listOfPets[i].img} alt=${listOfPets[i].name} class="card-img">
+                        <p class="card-title">${listOfPets[i].name}</p>
+                        <div class="card-button"><span class="card-button-link">Learn more</span></div>
+                    </div>
+    `;
+    
+    petsItems.appendChild(petCards);
+    // console.log(iter)
+}
+// if(countPagination == 1 || countPagination == 3){
+
+if(body.offsetWidth >= 1280){
+    i -= 8;
+}
+
+if(body.offsetWidth >= 630 && body.offsetWidth < 1280){
+    i -= 6;
+}
+
+if(body.offsetWidth < 630){
+    i -= 3;
+}
+    // i -= 8;
+// }
+
+// console.log(iter)
+};
+
+// addEventListener("resize", createCardPets);
+
+
+// function createCardPetsLeft () {
+//     console.log(i)
+//     console.log(iter)
+
+// console.log(countPagination)
+// // petsItems.innerHTML = '';
+// for(i; i<iter; i++){
+//     // console.log(i)
+//     // console.log(listOfPets[i].id)
+//     petCards = document.createElement('a');
+//     petCards.classList.add('our-friends-card-link-pets');
+//     petCards.setAttribute('href', '#');
+
+//     petCards.innerHTML = `
+//                     <div class="our-friends-card">
+//                         <p class="id">${listOfPets[i].id}</p>
+//                         <img src=${'.' + listOfPets[i].img} alt=${listOfPets[i].name} class="card-img">
+//                         <p class="card-title">${listOfPets[i].name}</p>
+//                         <div class="card-button"><span class="card-button-link">Learn more</span></div>
+//                     </div>
+//     `;
+    
+//     petsItems.appendChild(petCards);
+//     // console.log(iter)
+// }
+// // if(countPagination == 1 || countPagination == 3){
+//     i -= 8;
+// // }
+
+// // console.log(iter)
+// };
+
+createCardPets ();
+console.log(right)
+// right.addEventListener('click', createCardPets);
+// right.addEventListener('click', () => {
+//     // petsItems.innerHTML = '';
+//     iter += 8;
+//     i += 8;
+//     countPagination++;
+//     console.log(iter)
+// console.log(i)
+// console.log(countPagination)
+// });
+
+addEventListener("resize", () => {
+    if(body.offsetWidth >= 1280){
+        console.log(iter)
+    petsItems.innerHTML = '';
+        if(countPagination == 1) {
+    console.log(countPagination);
+    countPagination = 1;
+    i = 0;
+    iter = 8;
+    num.innerHTML = countPagination;
+    createCardPets();
+        } else if (countPagination == 2){
+    console.log(countPagination);
+    countPagination = 2;
+    i = 8;
+    iter = 16;
+    num.innerHTML = countPagination;
+    createCardPets();
+        } else if (countPagination == 3){
+    console.log(countPagination);
+    countPagination = 3;
+    i = 16;
+    iter = 24;
+    num.innerHTML = countPagination;
+    createCardPets();
+        } else if (countPagination == 4){
+    console.log(countPagination);
+    countPagination = 4;
+    i = 24;
+    iter = 32;
+    num.innerHTML = countPagination;
+    createCardPets();
+        } else if (countPagination == 5){
+    console.log(countPagination);
+    countPagination = 5;
+    i = 32;
+    iter = 40;
+    num.innerHTML = countPagination;
+    createCardPets();
+        } else if (countPagination == 6){
+    console.log(countPagination);
+    countPagination = 6;
+    i = 40;
+    iter = 48;
+    num.innerHTML = countPagination;
+    createCardPets();
+    right.disabled = true;
+    rightDouble.disabled = true;
+        } else {
+            countPagination = 6;
+            i = 40;
+    iter = 48;
+    num.innerHTML = countPagination;
+    createCardPets();
+    right.disabled = true;
+    rightDouble.disabled = true;
+        }
+    }
+    if(body.offsetWidth >= 630 && body.offsetWidth < 1280){
+        petsItems.innerHTML = '';
+        if(countPagination == 1) {
+    console.log(countPagination);
+    countPagination = 1;
+    i = 0;
+    iter = 6;
+    num.innerHTML = countPagination;
+    createCardPets();
+        } else if (countPagination == 2){
+    console.log(countPagination);
+    countPagination = 2;
+    i = 6;
+    iter = 12;
+    num.innerHTML = countPagination;
+    createCardPets();
+        } else if (countPagination == 3){
+    console.log(countPagination);
+    countPagination = 3;
+    i = 12;
+    iter = 18;
+    num.innerHTML = countPagination;
+    createCardPets();
+        } else if (countPagination == 4){
+    console.log(countPagination);
+    countPagination = 3;
+    i = 18;
+    iter = 24;
+    num.innerHTML = countPagination;
+    createCardPets();
+        } else if (countPagination == 5){
+    console.log(countPagination);
+    countPagination = 3;
+    i = 24;
+    iter = 30;
+    num.innerHTML = countPagination;
+    createCardPets();
+        } else if (countPagination == 6){
+    console.log(countPagination);
+    countPagination = 4;
+    i = 30;
+    iter = 36;
+    num.innerHTML = countPagination;
+    createCardPets();
+    right.disabled = false;
+    rightDouble.disabled = false;
+        } 
+        else if (countPagination > 6){
+            countPagination = 8;
+            i = 42;
+    iter = 48;
+    num.innerHTML = countPagination;
+    createCardPets();
+    right.disabled = true;
+    rightDouble.disabled = true;
+        }
+    }
+    if(body.offsetWidth >= 320 && body.offsetWidth < 630){
+        petsItems.innerHTML = '';
+        if(countPagination == 1) {
+    console.log(countPagination);
+    countPagination = 1;
+    i = 0;
+    iter = 3;
+    num.innerHTML = countPagination;
+    createCardPets();
+        } else if (countPagination == 2){
+    console.log(countPagination);
+    countPagination = 2;
+    i = 3;
+    iter = 6;
+    num.innerHTML = countPagination;
+    createCardPets();
+        } else if (countPagination == 3){
+    console.log(countPagination);
+    countPagination = 3;
+    i = 6;
+    iter = 9;
+    num.innerHTML = countPagination;
+    createCardPets();
+        } else if (countPagination == 4){
+    console.log(countPagination);
+    countPagination = 4;
+    i = 9;
+    iter = 12;
+    num.innerHTML = countPagination;
+    createCardPets();
+        } else if (countPagination == 5){
+    console.log(countPagination);
+    countPagination = 5;
+    i = 12;
+    iter = 15;
+    num.innerHTML = countPagination;
+    createCardPets();
+        } else if (countPagination == 6){
+    console.log(countPagination);
+    countPagination = 6;
+    i = 15;
+    iter = 18;
+    num.innerHTML = countPagination;
+    createCardPets();
+        } 
+    //     else if (countPagination == 7){
+    // console.log(countPagination);
+    // countPagination = 7;
+    // i = 18;
+    // iter = 21;
+    // num.innerHTML = countPagination;
+    // createCardPets();
+    //     } 
+        else if (countPagination > 6){
+    console.log(countPagination);
+    countPagination = 16;
+    i = 45;
+    iter = 48;
+    num.innerHTML = countPagination;
+    createCardPets();
+    right.disabled = true;
+    rightDouble.disabled = true;
+        }
+    //     } else {
+    //         countPagination = 16;
+    //         i = 40;
+    // iter = 48;
+    // num.innerHTML = countPagination;
+    // createCardPets();
+    // right.disabled = true;
+    // rightDouble.disabled = true;
+    //     }
+    }
+
+console.log(typeof countPagination)
+
+})
+})
+
 
 // burger
 
@@ -396,9 +1266,6 @@ addEventListener("resize", (event) => {
 }
 });
 
-// slider Main
-
-
 
 
 
@@ -477,4 +1344,20 @@ addEventListener("resize", (event) => {
 //         при каждой перезагрузке страницы формируется новая последовательность карточек: +2
 //         генерация наборов карточек происходит на основе 8 объектов с данными о животных: +2
 //     при изменении ширины экрана (от 1280px до 320px и обратно), слайдер перестраивается и работает без перезагрузки страницы (набор карточек при этом может как изменяться, так и оставаться тем же, скрывая лишнюю или добавляя недостающую, и сохраняя при этом описанные для слайдера требования): +3 (описано выше)
+
+// Реализация пагинации на странице Pets: +36
+//     при перезагрузке страницы всегда открывается первая страница пагинации: +2
+//     при нажатии кнопок > или < открывается следующая или предыдущая страница пагинации соответственно: +2
+//     при нажатии кнопок >> или << открывается последняя или первая страница пагинации соответственно: +2
+//     при открытии первой страницы кнопки << и < неактивны: +2
+//     при открытии последней страницы кнопки > и >> неактивны: +2
+//     в кружке по центру указан номер текущей страницы. При переключении страниц номер меняется на актуальный: +2
+//     каждая страница пагинации содержит псевдослучайный набор питомцев, т.е. формируется из исходных объектов в случайном порядке со следующими условиями:
+//     при загрузке страницы формируется массив из 48 объектов питомцев. Каждый из 8 питомцев должен встречаться ровно 6 раз: +4
+//     при каждой перезагрузке страницы формируется новый массив со случайной последовательностью: +4
+//     карточки питомцев не должны повторяться на одной странице: +4
+//     при переключении страницы данные меняются (для >1280px меняется порядок карточек, для остальных - меняется набор и порядок карточек): +4
+//     при неизменных размерах области пагинации, в том числе размерах окна браузера, и без перезагрузки страницы, возвращаясь на страницу под определенным номером, контент на ней всегда будет одинаков. Т.е. карточки питомцев будут в том же расположении, что и были до перехода на другие страницы: +2
+// общее количество страниц при ширине экрана 1280px - 6, при 768px - 8, при 320px - 16 страниц: +2
+//     при изменении ширины экрана (от 1280px до 320px и обратно), пагинация перестраивается и работает без перезагрузки страницы (страница может оставаться той же или переключаться, при этом сформированный массив - общая последовательность карточек - не обновляется, сохраняются все остальные требования к пагинации): +4
 // `)
