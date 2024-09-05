@@ -49,7 +49,7 @@ fetch(path)
         petCard.classList.add('our-pets-items');
         wrapper.prepend(petCard);
         petCard.innerHTML = `
-                            <a class="our-friends-card-link" href="#">
+                            <a class="our-friends-card-link" href="##">
                                 <div class="our-friends-card">
                                     <p class="id">${listOfCard[comp[k]].id}</p>
                                     <img src=${listOfCard[comp[k]].img} alt=${listOfCard[comp[k]].name} class="card-img">
@@ -57,7 +57,7 @@ fetch(path)
                                     <div class="card-button"><span class="card-button-link">Learn more</span></div>
                                 </div>
                             </a>
-                            <a class="our-friends-card-link" href="#">
+                            <a class="our-friends-card-link" href="##">
                                 <div class="our-friends-card">
                                     <p class="id">${listOfCard[comp[k]+1].id}</p>
                                     <img src=${listOfCard[comp[k]+1].img} alt=${listOfCard[comp[k]+1].name} class="card-img">
@@ -65,7 +65,7 @@ fetch(path)
                                     <div class="card-button"><span class="card-button-link">Learn more</span></div>
                                 </div>
                             </a>
-                            <a class="our-friends-card-link" href="#">
+                            <a class="our-friends-card-link" href="##">
                                 <div class="our-friends-card">
                                     <p class="id">${listOfCard[comp[k]+2].id}</p>
                                     <img src=${listOfCard[comp[k]+2].img} alt=${listOfCard[comp[k]+2].name} class="card-img">
@@ -234,6 +234,130 @@ let itemDelete = document.querySelectorAll('.our-pets-items');
     bt_l.addEventListener("click", moveLeft);
     bt_r.addEventListener("click", moveRight);
 })
+
+// Popup
+
+let closeBlock;
+let symbol;
+let closeSymbol;
+let darkBlock;
+let petBlock;
+
+wrapper.onclick = function (event){
+    let target = event.target;
+    let elem1 = target.parentElement.firstElementChild.innerHTML;
+    let elem2 = target.parentElement.parentElement.firstElementChild.innerHTML;
+
+    console.log(petsInfo)
+    console.dir(target.parentElement.firstElementChild.innerHTML);
+    console.dir(target.parentElement.parentElement.firstElementChild.innerHTML);
+    if (target.tagName == 'IMG' || target.tagName == 'P') {
+        let div = document.createElement('div');
+        div.classList.add('card_desc');
+
+        for(let i=0; i<petsInfo.length; i++){
+            
+            if(elem1 == petsInfo[i].id){
+                let index = petsInfo.findIndex(el => el.id === elem1);
+                console.log(index)
+                console.log(petsInfo[i].id)
+                div.innerHTML = `
+                    <div class="close">
+                        <svg width="12" class="symbol" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path class="close-symbol" fill-rule="evenodd" clip-rule="evenodd" d="M7.42618 6.00003L11.7046 1.72158C12.0985 1.32775 12.0985 0.689213 11.7046 0.295433C11.3108 -0.0984027 10.6723 -0.0984027 10.2785 0.295433L5.99998 4.57394L1.72148 0.295377C1.32765 -0.098459 0.68917 -0.098459 0.295334 0.295377C-0.0984448 0.689213 -0.0984448 1.32775 0.295334 1.72153L4.57383 5.99997L0.295334 10.2785C-0.0984448 10.6723 -0.0984448 11.3108 0.295334 11.7046C0.68917 12.0985 1.32765 12.0985 1.72148 11.7046L5.99998 7.42612L10.2785 11.7046C10.6723 12.0985 11.3108 12.0985 11.7046 11.7046C12.0985 11.3108 12.0985 10.6723 11.7046 10.2785L7.42618 6.00003Z" fill="#292929" />
+</svg>
+                    </div>
+                    <div class="card-wrapper">
+                        <img src=${"." + petsInfo[index].img} alt=${petsInfo[index].name} class="img-pets">
+                        <div class="desc-wrapper">
+                            <h3 class="pet-name">${petsInfo[index].name}</h3>
+                            <span class="pet-breed">${petsInfo[index].type} - ${petsInfo[index].breed}</span>
+                            <p class="pet-desc">${petsInfo[index].description}</p>
+                            <ul class="pet-list">
+                                <li class="pet-list-item"><strong>Age: </strong>${petsInfo[index].age}</li>
+                                <li class="pet-list-item"><strong>Inoculations: </strong>${petsInfo[index].inoculations}</li>
+                                <li class="pet-list-item"><strong>Diseases: </strong>${petsInfo[index].diseases}</li>
+                                <li class="pet-list-item"><strong>Parasites: </strong>${petsInfo[index].parasites}</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            }
+        }
+
+    let wrapperBlock = document.createElement('div');
+        wrapperBlock.classList.add('dark-block');
+        body.prepend(div);
+        body.prepend(wrapperBlock);
+
+        document.body.style.overflow = "hidden";
+
+        
+    }
+
+    if (target.tagName == 'SPAN') {
+        let div = document.createElement('div');
+        div.classList.add('card_desc');
+
+        for(let i=0; i<petsInfo.length; i++){
+            
+            if(elem2 == petsInfo[i].id){
+                let index = petsInfo.findIndex(el => el.id === elem2);
+                console.log(index)
+                console.log(petsInfo[i].id)
+                div.innerHTML = `
+                    <div class="close">
+                        <svg width="12" class="symbol" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path class="close-symbol" fill-rule="evenodd" clip-rule="evenodd" d="M7.42618 6.00003L11.7046 1.72158C12.0985 1.32775 12.0985 0.689213 11.7046 0.295433C11.3108 -0.0984027 10.6723 -0.0984027 10.2785 0.295433L5.99998 4.57394L1.72148 0.295377C1.32765 -0.098459 0.68917 -0.098459 0.295334 0.295377C-0.0984448 0.689213 -0.0984448 1.32775 0.295334 1.72153L4.57383 5.99997L0.295334 10.2785C-0.0984448 10.6723 -0.0984448 11.3108 0.295334 11.7046C0.68917 12.0985 1.32765 12.0985 1.72148 11.7046L5.99998 7.42612L10.2785 11.7046C10.6723 12.0985 11.3108 12.0985 11.7046 11.7046C12.0985 11.3108 12.0985 10.6723 11.7046 10.2785L7.42618 6.00003Z" fill="#292929" />
+</svg>
+                    </div>
+                    <div class="card-wrapper">
+                        <img src=${"." + petsInfo[index].img} alt=${petsInfo[index].name} class="img-pets">
+                        <div class="desc-wrapper">
+                            <h3 class="pet-name">${petsInfo[index].name}</h3>
+                            <span class="pet-breed">${petsInfo[index].type} - ${petsInfo[index].breed}</span>
+                            <p class="pet-desc">${petsInfo[index].description}</p>
+                            <ul class="pet-list">
+                                <li class="pet-list-item"><strong>Age: </strong>${petsInfo[index].age}</li>
+                                <li class="pet-list-item"><strong>Inoculations: </strong>${petsInfo[index].inoculations}</li>
+                                <li class="pet-list-item"><strong>Diseases: </strong>${petsInfo[index].diseases}</li>
+                                <li class="pet-list-item"><strong>Parasites: </strong>${petsInfo[index].parasites}</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            }
+        }
+
+    let wrapperBlock = document.createElement('div');
+        wrapperBlock.classList.add('dark-block');
+        body.prepend(div);
+        body.prepend(wrapperBlock);
+
+        document.body.style.overflow = "hidden";
+
+        
+    }
+
+    closeBlock = document.querySelector('.close');
+    symbol = document.querySelector('.symbol');
+    closeSymbol = document.querySelector('.close-symbol');
+    darkBlock = document.querySelector('.dark-block');
+    petBlock = document.querySelector('.card_desc')
+
+}
+
+body.onclick = function (event) {
+    let targetBlock = event.target;
+    console.log(targetBlock === closeBlock)
+    console.log(closeBlock);
+    console.log(targetBlock);
+    if(targetBlock === closeBlock || targetBlock === symbol || targetBlock === closeSymbol || targetBlock === darkBlock){
+        document.body.style.overflow = "";
+        darkBlock.remove();
+        petBlock.remove();
+    }
+}
 });
 
 // Pets pagination
@@ -247,228 +371,20 @@ let rightDouble = document.querySelector('.right-double');
 let num = document.querySelector('.num');
 let petsItems = document.querySelector('.pets-items');
 
-// right.disabled = false;
-// rightDouble.disabled = false;
-
 fetch(path_pets)
 .then(response => response.json())
 .then(petsInfo => {
 
-
-
 let listOfPets = [];
-
-// let list_1 = random(petsInfo);
-// let list_2 = random(petsInfo);
-// let list_3 = random(petsInfo);
-// let list_4 = random(petsInfo);
-// let list_5 = random(petsInfo);
-
-// listOfPets = listOfPets.concat(list_1, list_2, list_3, list_4, list_5);
-console.log(right)
 
 for (let j=0; j<6; j++){
     listOfPets = listOfPets.concat(random(petsInfo));
 }
-console.log(listOfPets)
 
 let iter;
 let i = 0;
 let countPagination = 1;
 let petCards;
-
-// addEventListener("resize", () => {
-//     if(body.offsetWidth >= 1280){
-//         console.log(iter)
-//     petsItems.innerHTML = '';
-//         if(countPagination == 1) {
-//     console.log(countPagination);
-//     countPagination = 1;
-//     i = 0;
-//     iter = 8;
-//     num.innerHTML = countPagination;
-//     createCardPets();
-//         } else if (countPagination == 2){
-//     console.log(countPagination);
-//     countPagination = 2;
-//     i = 8;
-//     iter = 16;
-//     num.innerHTML = countPagination;
-//     createCardPets();
-//         } else if (countPagination == 3){
-//     console.log(countPagination);
-//     countPagination = 3;
-//     i = 16;
-//     iter = 24;
-//     num.innerHTML = countPagination;
-//     createCardPets();
-//         } else if (countPagination == 4){
-//     console.log(countPagination);
-//     countPagination = 4;
-//     i = 24;
-//     iter = 32;
-//     num.innerHTML = countPagination;
-//     createCardPets();
-//         } else if (countPagination == 5){
-//     console.log(countPagination);
-//     countPagination = 5;
-//     i = 32;
-//     iter = 40;
-//     num.innerHTML = countPagination;
-//     createCardPets();
-//         } else if (countPagination == 6){
-//     console.log(countPagination);
-//     countPagination = 6;
-//     i = 40;
-//     iter = 48;
-//     num.innerHTML = countPagination;
-//     createCardPets();
-//     right.disabled = true;
-//     rightDouble.disabled = true;
-//         } else {
-//             countPagination = 6;
-//             i = 40;
-//     iter = 48;
-//     num.innerHTML = countPagination;
-//     createCardPets();
-//     right.disabled = true;
-//     rightDouble.disabled = true;
-//         }
-//     }
-//     if(body.offsetWidth >= 630 && body.offsetWidth < 1280){
-//         petsItems.innerHTML = '';
-//         if(countPagination == 1) {
-//     console.log(countPagination);
-//     countPagination = 1;
-//     i = 0;
-//     iter = 6;
-//     num.innerHTML = countPagination;
-//     createCardPets();
-//         } else if (countPagination == 2){
-//     console.log(countPagination);
-//     countPagination = 2;
-//     i = 6;
-//     iter = 12;
-//     num.innerHTML = countPagination;
-//     createCardPets();
-//         } else if (countPagination == 3){
-//     console.log(countPagination);
-//     countPagination = 3;
-//     i = 12;
-//     iter = 18;
-//     num.innerHTML = countPagination;
-//     createCardPets();
-//         } else if (countPagination == 4){
-//     console.log(countPagination);
-//     countPagination = 3;
-//     i = 18;
-//     iter = 24;
-//     num.innerHTML = countPagination;
-//     createCardPets();
-//         } else if (countPagination == 5){
-//     console.log(countPagination);
-//     countPagination = 3;
-//     i = 24;
-//     iter = 30;
-//     num.innerHTML = countPagination;
-//     createCardPets();
-//         } else if (countPagination == 6){
-//     console.log(countPagination);
-//     countPagination = 4;
-//     i = 30;
-//     iter = 36;
-//     num.innerHTML = countPagination;
-//     createCardPets();
-//     right.disabled = false;
-//     rightDouble.disabled = false;
-//         } else {
-//             countPagination = 8;
-//             i = 40;
-//     iter = 48;
-//     num.innerHTML = countPagination;
-//     createCardPets();
-//     right.disabled = true;
-//     rightDouble.disabled = true;
-//         }
-//     }
-//     if(body.offsetWidth < 630){
-//         petsItems.innerHTML = '';
-//         if(countPagination == 1) {
-//     console.log(countPagination);
-//     countPagination = 1;
-//     i = 0;
-//     iter = 3;
-//     num.innerHTML = countPagination;
-//     createCardPets();
-//         } else if (countPagination == 2){
-//     console.log(countPagination);
-//     countPagination = 2;
-//     i = 3;
-//     iter = 9;
-//     num.innerHTML = countPagination;
-//     createCardPets();
-//         } else if (countPagination == 3){
-//     console.log(countPagination);
-//     countPagination = 3;
-//     i = 9;
-//     iter = 12;
-//     num.innerHTML = countPagination;
-//     createCardPets();
-//         } else if (countPagination == 4){
-//     console.log(countPagination);
-//     countPagination = 4;
-//     i = 12;
-//     iter = 15;
-//     num.innerHTML = countPagination;
-//     createCardPets();
-//         } else if (countPagination == 5){
-//     console.log(countPagination);
-//     countPagination = 5;
-//     i = 15;
-//     iter = 18;
-//     num.innerHTML = countPagination;
-//     createCardPets();
-//         } else if (countPagination == 6){
-//     console.log(countPagination);
-//     countPagination = 6;
-//     i = 18;
-//     iter = 21;
-//     num.innerHTML = countPagination;
-//     createCardPets();
-//         } else if (countPagination == 7){
-//     console.log(countPagination);
-//     countPagination = 7;
-//     i = 21;
-//     iter = 24;
-//     num.innerHTML = countPagination;
-//     createCardPets();
-//         } else if (countPagination == 8){
-//     console.log(countPagination);
-//     countPagination = 16;
-//     i = 45;
-//     iter = 48;
-//     num.innerHTML = countPagination;
-//     createCardPets();
-//     right.disabled = true;
-//     rightDouble.disabled = true;
-//         }
-//     //     } else {
-//     //         countPagination = 16;
-//     //         i = 40;
-//     // iter = 48;
-//     // num.innerHTML = countPagination;
-//     // createCardPets();
-//     // right.disabled = true;
-//     // rightDouble.disabled = true;
-//     //     }
-//     }
-
-// console.log(typeof countPagination)
-
-// })
-
-
-
 
 if(body.offsetWidth >= 1280){
     iter = 8;
@@ -484,7 +400,6 @@ if(body.offsetWidth < 630){
 
 right.onclick = () => {
 petsItems.innerHTML = '';
-// petCards.remove();
 
 if(body.offsetWidth >= 1280){
     i += 8;
@@ -501,12 +416,7 @@ if(body.offsetWidth < 630){
     iter = i + 3;
 }
     
-    // i += 8;
-    // iter = i + 8;
-    ++countPagination;
-    // console.log(iter)
-// console.log(i)
-// console.log(petsItems)
+++countPagination;
 
 if(body.offsetWidth >= 1280){
     if (countPagination == 6){
@@ -588,37 +498,13 @@ if (countPagination < 16){
     `;
 }
 }
-// if (countPagination == 6){
-//     right.disabled = true;
-//     rightDouble.disabled = true;
-//     right.style.cssText = `
-//     cursor: not-allowed;
-//     background-color: #f6f6f6;
-//     `;
-//     rightDouble.style.cssText = `
-//     cursor: not-allowed;
-//     background-color: #f6f6f6;
-//     `;
-// }
-// if (countPagination < 6){
-//     left.disabled = false;
-//     leftDouble.disabled = false;
-//     left.style.cssText = `
-//     cursor: pointer;
-//     background-color: #F1CDB3;
-//     `;
-//     leftDouble.style.cssText = `
-//     cursor: pointer;
-//     background-color: #F1CDB3;
-//     `;
-// }
 
 num.innerHTML = countPagination;
 };
 
 left.onclick = () => {
 petsItems.innerHTML = '';
-// petCards.remove();
+
 if(body.offsetWidth >= 1280){
     i -= 8;
     iter = i + 8;
@@ -634,12 +520,8 @@ if(body.offsetWidth < 630){
     iter = i + 3;
 }
     
-    // i -= 8;
-    // iter = i + 8;
-    --countPagination;
-    console.log(iter)
-console.log(i)
-console.log(petsItems)
+--countPagination;
+
 if (countPagination == 1){
     left.disabled = true;
     leftDouble.disabled = true;
@@ -697,18 +579,6 @@ if(body.offsetWidth < 630){
     `;
 }
 }
-// if (countPagination < 6){
-//     right.disabled = false;
-//     rightDouble.disabled = false;
-//     right.style.cssText = `
-//     cursor: pointer;
-//     background-color: #F1CDB3;
-//     `;
-//     rightDouble.style.cssText = `
-//     cursor: pointer;
-//     background-color: #F1CDB3;
-//     `;
-// }
 
 num.innerHTML = countPagination;
 };
@@ -717,7 +587,7 @@ rightDouble.onclick = () => {
     petsItems.innerHTML = '';
     iter = 48;
     if(body.offsetWidth >= 1280){
-        i = 40;
+    i = 40;
     countPagination = 6;
 }
 
@@ -730,14 +600,11 @@ if(body.offsetWidth < 630){
     i = 45;
     countPagination = 16;
 }
-    // countPagination = 6;
     left.disabled = false;
     leftDouble.disabled = false;
     right.disabled = true;
     rightDouble.disabled = true;
     num.innerHTML = countPagination;
-    // console.log(i)
-    // console.log(iter)
     right.style.cssText = `
     cursor: not-allowed;
     background-color: #f6f6f6;
@@ -769,7 +636,6 @@ if(body.offsetWidth >= 630 && body.offsetWidth < 1280){
 if(body.offsetWidth < 630){
     iter = 3;
 }
-    // iter = 8;
     i = 0;
     countPagination = 1;
     left.disabled = true;
@@ -777,8 +643,6 @@ if(body.offsetWidth < 630){
     right.disabled = false;
     rightDouble.disabled = false;
     num.innerHTML = countPagination;
-    // console.log(i)
-    // console.log(iter)
     left.style.cssText = `
     cursor: not-allowed;
     background-color: #f6f6f6;
@@ -801,35 +665,13 @@ right.addEventListener('click', createCardPets);
 left.addEventListener('click', createCardPets);
 rightDouble.addEventListener('click', createCardPets);
 leftDouble.addEventListener('click', createCardPets);
-// right.addEventListener('mouseenter', () => {
-//     if (right.disabled = false){
-//         console.log(right)
-//         right.style.cssText = `
-//             cursor: pointer;
-//             background-color: #F1CDB3;
-//         `;
-//     }
-// });
-// right.addEventListener('mouseout', () => {
-//     if (right.disabled = false){
-//         right.style.cssText = `
-//             background-color: #f6f6f6;
-//         `;
-//     }
-// });
 
 function createCardPets () {
-    // console.log(i)
-    // console.log(iter)
 
-console.log(countPagination)
-// petsItems.innerHTML = '';
 for(i; i<iter; i++){
-    // console.log(i)
-    // console.log(listOfPets[i].id)
     petCards = document.createElement('a');
     petCards.classList.add('our-friends-card-link-pets');
-    petCards.setAttribute('href', '#');
+    petCards.setAttribute('href', '##');
 
     petCards.innerHTML = `
                     <div class="our-friends-card">
@@ -841,9 +683,7 @@ for(i; i<iter; i++){
     `;
     
     petsItems.appendChild(petCards);
-    // console.log(iter)
 }
-// if(countPagination == 1 || countPagination == 3){
 
 if(body.offsetWidth >= 1280){
     i -= 8;
@@ -856,59 +696,9 @@ if(body.offsetWidth >= 630 && body.offsetWidth < 1280){
 if(body.offsetWidth < 630){
     i -= 3;
 }
-    // i -= 8;
-// }
-
-// console.log(iter)
 };
 
-// addEventListener("resize", createCardPets);
-
-
-// function createCardPetsLeft () {
-//     console.log(i)
-//     console.log(iter)
-
-// console.log(countPagination)
-// // petsItems.innerHTML = '';
-// for(i; i<iter; i++){
-//     // console.log(i)
-//     // console.log(listOfPets[i].id)
-//     petCards = document.createElement('a');
-//     petCards.classList.add('our-friends-card-link-pets');
-//     petCards.setAttribute('href', '#');
-
-//     petCards.innerHTML = `
-//                     <div class="our-friends-card">
-//                         <p class="id">${listOfPets[i].id}</p>
-//                         <img src=${'.' + listOfPets[i].img} alt=${listOfPets[i].name} class="card-img">
-//                         <p class="card-title">${listOfPets[i].name}</p>
-//                         <div class="card-button"><span class="card-button-link">Learn more</span></div>
-//                     </div>
-//     `;
-    
-//     petsItems.appendChild(petCards);
-//     // console.log(iter)
-// }
-// // if(countPagination == 1 || countPagination == 3){
-//     i -= 8;
-// // }
-
-// // console.log(iter)
-// };
-
 createCardPets ();
-console.log(right)
-// right.addEventListener('click', createCardPets);
-// right.addEventListener('click', () => {
-//     // petsItems.innerHTML = '';
-//     iter += 8;
-//     i += 8;
-//     countPagination++;
-//     console.log(iter)
-// console.log(i)
-// console.log(countPagination)
-// });
 
 addEventListener("resize", () => {
     if(body.offsetWidth >= 1280){
@@ -959,8 +749,8 @@ addEventListener("resize", () => {
     right.disabled = true;
     rightDouble.disabled = true;
         } else {
-            countPagination = 6;
-            i = 40;
+    countPagination = 6;
+    i = 40;
     iter = 48;
     num.innerHTML = countPagination;
     createCardPets();
@@ -1014,10 +804,9 @@ addEventListener("resize", () => {
     createCardPets();
     right.disabled = false;
     rightDouble.disabled = false;
-        } 
-        else if (countPagination > 6){
-            countPagination = 8;
-            i = 42;
+        } else if (countPagination > 6){
+    countPagination = 8;
+    i = 42;
     iter = 48;
     num.innerHTML = countPagination;
     createCardPets();
@@ -1069,16 +858,7 @@ addEventListener("resize", () => {
     iter = 18;
     num.innerHTML = countPagination;
     createCardPets();
-        } 
-    //     else if (countPagination == 7){
-    // console.log(countPagination);
-    // countPagination = 7;
-    // i = 18;
-    // iter = 21;
-    // num.innerHTML = countPagination;
-    // createCardPets();
-    //     } 
-        else if (countPagination > 6){
+        } else if (countPagination > 6){
     console.log(countPagination);
     countPagination = 16;
     i = 45;
@@ -1088,20 +868,133 @@ addEventListener("resize", () => {
     right.disabled = true;
     rightDouble.disabled = true;
         }
-    //     } else {
-    //         countPagination = 16;
-    //         i = 40;
-    // iter = 48;
-    // num.innerHTML = countPagination;
-    // createCardPets();
-    // right.disabled = true;
-    // rightDouble.disabled = true;
-    //     }
     }
 
-console.log(typeof countPagination)
-
 })
+
+// Popup
+
+let closeBlock;
+let symbol;
+let closeSymbol;
+let darkBlock;
+let petBlock;
+
+petsItems.onclick = function (event){
+    let target = event.target;
+    let elem1 = target.parentElement.firstElementChild.innerHTML;
+    let elem2 = target.parentElement.parentElement.firstElementChild.innerHTML;
+
+    console.log(petsInfo)
+    console.dir(target.parentElement.firstElementChild.innerHTML);
+    console.dir(target.parentElement.parentElement.firstElementChild.innerHTML);
+    if (target.tagName == 'IMG' || target.tagName == 'P') {
+        let div = document.createElement('div');
+        div.classList.add('card_desc');
+
+        for(let i=0; i<petsInfo.length; i++){
+            
+            if(elem1 == petsInfo[i].id){
+                let index = petsInfo.findIndex(el => el.id === elem1);
+                console.log(index)
+                console.log(petsInfo[i].id)
+                div.innerHTML = `
+                    <div class="close">
+                        <svg width="12" class="symbol" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path class="close-symbol" fill-rule="evenodd" clip-rule="evenodd" d="M7.42618 6.00003L11.7046 1.72158C12.0985 1.32775 12.0985 0.689213 11.7046 0.295433C11.3108 -0.0984027 10.6723 -0.0984027 10.2785 0.295433L5.99998 4.57394L1.72148 0.295377C1.32765 -0.098459 0.68917 -0.098459 0.295334 0.295377C-0.0984448 0.689213 -0.0984448 1.32775 0.295334 1.72153L4.57383 5.99997L0.295334 10.2785C-0.0984448 10.6723 -0.0984448 11.3108 0.295334 11.7046C0.68917 12.0985 1.32765 12.0985 1.72148 11.7046L5.99998 7.42612L10.2785 11.7046C10.6723 12.0985 11.3108 12.0985 11.7046 11.7046C12.0985 11.3108 12.0985 10.6723 11.7046 10.2785L7.42618 6.00003Z" fill="#292929" />
+</svg>
+                    </div>
+                    <div class="card-wrapper">
+                        <img src=${"." + petsInfo[index].img} alt=${petsInfo[index].name} class="img-pets">
+                        <div class="desc-wrapper">
+                            <h3 class="pet-name">${petsInfo[index].name}</h3>
+                            <span class="pet-breed">${petsInfo[index].type} - ${petsInfo[index].breed}</span>
+                            <p class="pet-desc">${petsInfo[index].description}</p>
+                            <ul class="pet-list">
+                                <li class="pet-list-item"><strong>Age: </strong>${petsInfo[index].age}</li>
+                                <li class="pet-list-item"><strong>Inoculations: </strong>${petsInfo[index].inoculations}</li>
+                                <li class="pet-list-item"><strong>Diseases: </strong>${petsInfo[index].diseases}</li>
+                                <li class="pet-list-item"><strong>Parasites: </strong>${petsInfo[index].parasites}</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            }
+        }
+
+    let wrapperBlock = document.createElement('div');
+        wrapperBlock.classList.add('dark-block');
+        body.prepend(div);
+        body.prepend(wrapperBlock);
+
+        document.body.style.overflow = "hidden";
+
+        
+    }
+
+    if (target.tagName == 'SPAN') {
+        let div = document.createElement('div');
+        div.classList.add('card_desc');
+
+        for(let i=0; i<petsInfo.length; i++){
+            
+            if(elem2 == petsInfo[i].id){
+                let index = petsInfo.findIndex(el => el.id === elem2);
+                console.log(index)
+                console.log(petsInfo[i].id)
+                div.innerHTML = `
+                    <div class="close">
+                        <svg width="12" class="symbol" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path class="close-symbol" fill-rule="evenodd" clip-rule="evenodd" d="M7.42618 6.00003L11.7046 1.72158C12.0985 1.32775 12.0985 0.689213 11.7046 0.295433C11.3108 -0.0984027 10.6723 -0.0984027 10.2785 0.295433L5.99998 4.57394L1.72148 0.295377C1.32765 -0.098459 0.68917 -0.098459 0.295334 0.295377C-0.0984448 0.689213 -0.0984448 1.32775 0.295334 1.72153L4.57383 5.99997L0.295334 10.2785C-0.0984448 10.6723 -0.0984448 11.3108 0.295334 11.7046C0.68917 12.0985 1.32765 12.0985 1.72148 11.7046L5.99998 7.42612L10.2785 11.7046C10.6723 12.0985 11.3108 12.0985 11.7046 11.7046C12.0985 11.3108 12.0985 10.6723 11.7046 10.2785L7.42618 6.00003Z" fill="#292929" />
+</svg>
+                    </div>
+                    <div class="card-wrapper">
+                        <img src=${"." + petsInfo[index].img} alt=${petsInfo[index].name} class="img-pets">
+                        <div class="desc-wrapper">
+                            <h3 class="pet-name">${petsInfo[index].name}</h3>
+                            <span class="pet-breed">${petsInfo[index].type} - ${petsInfo[index].breed}</span>
+                            <p class="pet-desc">${petsInfo[index].description}</p>
+                            <ul class="pet-list">
+                                <li class="pet-list-item"><strong>Age: </strong>${petsInfo[index].age}</li>
+                                <li class="pet-list-item"><strong>Inoculations: </strong>${petsInfo[index].inoculations}</li>
+                                <li class="pet-list-item"><strong>Diseases: </strong>${petsInfo[index].diseases}</li>
+                                <li class="pet-list-item"><strong>Parasites: </strong>${petsInfo[index].parasites}</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            }
+        }
+
+    let wrapperBlock = document.createElement('div');
+        wrapperBlock.classList.add('dark-block');
+        body.prepend(div);
+        body.prepend(wrapperBlock);
+
+        document.body.style.overflow = "hidden";
+
+        
+    }
+
+    closeBlock = document.querySelector('.close');
+    symbol = document.querySelector('.symbol');
+    closeSymbol = document.querySelector('.close-symbol');
+    darkBlock = document.querySelector('.dark-block');
+    petBlock = document.querySelector('.card_desc')
+
+}
+
+body.onclick = function (event) {
+    let targetBlock = event.target;
+    console.log(targetBlock === closeBlock)
+    console.log(closeBlock);
+    console.log(targetBlock);
+    if(targetBlock === closeBlock || targetBlock === symbol || targetBlock === closeSymbol || targetBlock === darkBlock){
+        document.body.style.overflow = "";
+        darkBlock.remove();
+        petBlock.remove();
+    }
+}
 })
 
 
