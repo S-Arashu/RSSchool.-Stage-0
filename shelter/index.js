@@ -266,7 +266,7 @@ wrapper.onclick = function (event){
 </svg>
                     </div>
                     <div class="card-wrapper">
-                        <img src=${"." + petsInfo[index].img} alt=${petsInfo[index].name} class="img-pets">
+                        <img src=${petsInfo[index].img} alt=${petsInfo[index].name} class="img-pets">
                         <div class="desc-wrapper">
                             <h3 class="pet-name">${petsInfo[index].name}</h3>
                             <span class="pet-breed">${petsInfo[index].type} - ${petsInfo[index].breed}</span>
@@ -310,7 +310,7 @@ wrapper.onclick = function (event){
 </svg>
                     </div>
                     <div class="card-wrapper">
-                        <img src=${"." + petsInfo[index].img} alt=${petsInfo[index].name} class="img-pets">
+                        <img src=${petsInfo[index].img} alt=${petsInfo[index].name} class="img-pets">
                         <div class="desc-wrapper">
                             <h3 class="pet-name">${petsInfo[index].name}</h3>
                             <span class="pet-breed">${petsInfo[index].type} - ${petsInfo[index].breed}</span>
