@@ -44,8 +44,6 @@ fetch(path)
         comp.push(p);
         numOfPet_check.push(p)
         sliderBlock.push(p);
-        console.log(comp)
-        console.log(numOfPet_check)
         petCard.classList.add('our-pets-items');
         wrapper.prepend(petCard);
         petCard.innerHTML = `
@@ -87,7 +85,7 @@ fetch(path)
     let createSlider = () => {
         let petCard = document.createElement('a');
         petCard.classList.add('our-friends-card-link');
-        petCard.setAttribute('href', '#');
+        petCard.setAttribute('href', '##');
         return petCard;
     }    
 let pets = document.querySelectorAll('.our-pets-items')[1];
@@ -221,8 +219,8 @@ let itemDelete = document.querySelectorAll('.our-pets-items');
             itemDelete[1].lastElementChild.classList.remove('delete');
         }
         if(body.offsetWidth >= 768 && body.offsetWidth <= 1099){
-            itemDelete[1].lastElementChild.classList.add('delete');
-        console.dir(itemDelete[0].children)
+            itemDelete[2].lastElementChild.classList.add('delete');
+        console.dir(itemDelete[0].lastElementChild)
     }
     if(body.offsetWidth < 768){
         itemDelete[1].lastElementChild.classList.add('delete');
