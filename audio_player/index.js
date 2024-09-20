@@ -19,6 +19,9 @@ fetch(path)
     let volumeContainer = document.querySelector ('.volume-container');
     let volume = document.querySelector('.volume');
     let noMusic = document.querySelector('#no-music');
+    let bg_img = document.querySelector('#bg_img');
+    let songName = document.querySelector('#song-name');
+    let songContainer = document.querySelector('.song-container');
 
     let numOfTrack = 0;
 
@@ -89,6 +92,24 @@ console.log(volumeContainer)
     }
 
     playBtn.addEventListener('click', play);
+
+    audio.onended = function(){
+        isPlay = false;
+        numOfTrack += 1;
+        
+        if(numOfTrack > 14){
+            numOfTrack = 0;
+        }
+        audio.src = music_data[numOfTrack].song;
+        bg_img.setAttribute('src', music_data[numOfTrack].bg_img);
+        songName.innerHTML = music_data[numOfTrack].name_song;
+        songContainer.style.cssText = `
+        background: linear-gradient(0deg, rgba(28, 27, 25, 1) 29%, rgba(28, 27, 25, 0) 51%, rgba(28, 27, 25, 1) 79%), url(${music_data[numOfTrack].img});
+        background-size: cover;
+        `
+        play();
+    }
+
     next.addEventListener('click', () => {
         isPlay = false;
         numOfTrack += 1;
@@ -97,6 +118,12 @@ console.log(volumeContainer)
             numOfTrack = 0;
         }
         audio.src = music_data[numOfTrack].song;
+        bg_img.setAttribute('src', music_data[numOfTrack].bg_img);
+        songName.innerHTML = music_data[numOfTrack].name_song;
+        songContainer.style.cssText = `
+        background: linear-gradient(0deg, rgba(28, 27, 25, 1) 29%, rgba(28, 27, 25, 0) 51%, rgba(28, 27, 25, 1) 79%), url(${music_data[numOfTrack].img});
+        background-size: cover;
+        `
         play();
     });
 
@@ -108,6 +135,12 @@ console.log(volumeContainer)
             numOfTrack = 14;
         }
         audio.src = music_data[numOfTrack].song;
+        bg_img.setAttribute('src', music_data[numOfTrack].bg_img);
+        songName.innerHTML = music_data[numOfTrack].name_song;
+        songContainer.style.cssText = `
+        background: linear-gradient(0deg, rgba(28, 27, 25, 1) 29%, rgba(28, 27, 25, 0) 51%, rgba(28, 27, 25, 1) 79%), url(${music_data[numOfTrack].img});
+        background-size: cover;
+        `
         play();
     });
 
