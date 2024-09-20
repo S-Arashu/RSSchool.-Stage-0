@@ -14,13 +14,19 @@ fetch(path)
     let img = document.querySelector('.toggle-music img')
     let length = document.querySelector('.length');
     let current = document.querySelector('.current');
-    let timePlay = 0;
+    let containerProgress = document.querySelector('#container-progress');
 
     let numOfTrack = 0;
 
     audio.addEventListener ('loadeddata', () => {
         length.textContent = getTime(audio.duration);
-        audio.volume = .7;
+        audio.volume = .5;
+    })
+
+    containerProgress.addEventListener("click", event => {
+
+        let pastTime = event.offsetX / event.target.offsetWidth * audio.duration;
+        audio.currentTime = pastTime;
     })
 
     setInterval(() => {
