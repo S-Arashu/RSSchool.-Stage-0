@@ -24,6 +24,14 @@ fetch(path)
     })
 
     setInterval(() => {
+        let progress = document.querySelector("#progress");
+        progress.style.width = audio.currentTime / audio.duration * 100 + "%";
+        if(audio.currentTime / audio.duration * 100 < 10 || audio.currentTime / audio.duration * 100 > 90){
+            progress.style.borderRadius = 50 + "%";
+        } else {
+            progress.style.borderTopRightRadius = 0;
+            progress.style.borderBottomRightRadius = 0;
+        }
         current.textContent = getTime(audio.currentTime)
     },500)
 
@@ -49,20 +57,22 @@ fetch(path)
     next.addEventListener('click', () => {
         isPlay = false;
         numOfTrack += 1;
-        audio.src = music_data[numOfTrack].song;
+        
         if(numOfTrack > 14){
             numOfTrack = 0;
         }
+        audio.src = music_data[numOfTrack].song;
         play();
     });
 
     prev.addEventListener('click', () => {
         isPlay = false;
         numOfTrack -= 1;
-        audio.src = music_data[numOfTrack].song;
+        
         if(numOfTrack < 0){
             numOfTrack = 14;
         }
+        audio.src = music_data[numOfTrack].song;
         play();
     });
 
