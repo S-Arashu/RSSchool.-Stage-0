@@ -222,7 +222,7 @@ body {
     transform: rotate(90deg);
     position: fixed;
     right: 13.6%;
-    top: 21%;
+    margin-top: 5%;
     border-radius: 1em;
     overflow: auto;
     transition: .3s ease-in-out;
@@ -244,4 +244,134 @@ body {
 
 .muted {
     filter: brightness(0.5);
+}
+
+.info-github img {
+    position: absolute;
+    bottom: 1%;
+    left: 1%;
+    width: 5%;
+}
+
+.info-year {
+    position: absolute;
+    color: azure;
+    bottom: -2%;
+    left: 10%;
+    font-size: 1.5em;
+}
+
+.info-logo img {
+    position: absolute;
+    width: 11%;
+    bottom: 2%;
+    right: 3%;
+    filter: drop-shadow(0px 0px 9px white);
+}
+
+@media (max-width: 1920px) {
+    .volume-container {
+        width: 17%;
+        margin-top: 9%;
+        right: 13.9%;
+    }
+
+    #no-music {
+        margin-top: 32%;
+    }
+}
+
+@media (max-width: 1690px) {
+    .volume-container {
+        width: 17%;
+        margin-top: 9%;
+        right: 14%;
+    }
+
+    #no-music {
+        margin-top: 32%;
+    }
+}
+
+@media (max-width: 1540px) {
+    .volume-container {
+        width: 17%;
+        margin-top: 9%;
+        right: 14.1%;
+    }
+
+    #no-music {
+        margin-top: 32%;
+    }
+}
+
+@media (max-width: 1390px) {
+    .volume-container {
+        width: 17%;
+        margin-top: 9%;
+        right: 14.2%;
+    }
+
+    #no-music {
+        margin-top: 32%;
+    }
+}
+
+@media (max-width: 1240px) {
+    .volume-container {
+        width: 17%;
+        margin-top: 9%;
+        right: 14.3%;
+    }
+
+    #no-music {
+        margin-top: 32%;
+    }
+}
+
+@media (max-width: 1120px) {
+    .volume-container {
+        width: 20%;
+        margin-top: 10%;
+        right: 13%;
+    }
+
+    #no-music {
+        margin-top: 36%;
+    }
+}
+
+@media (max-width: 1030px) {
+    .volume-container {
+        width: 20%;
+        margin-top: 10%;
+        right: 13.2%;
+    }
+
+    #no-music {
+        margin-top: 39%;
+    }
+}
+
+@media (max-width: 900px) {
+    .volume-container {
+        width: 20%;
+        margin-top: 10%;
+        right: 13.3%;
+    }
+
+    #no-music {
+        margin-top: 39%;
+    }
+}
+
+@media (max-width: 768px) {
+    .volume-container{
+        margin-top: 10%;
+        right: 13.7%;
+    }
+
+    #no-music {
+        margin-top: 37%;
+    }
 }
