@@ -62,3 +62,22 @@ button img {
     width: 3em;
     transition: .3s ease-in-out;
 }
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-links {
+    width: 3em;
+}
+
+.rights {
+    font-size: 0.7em;
+    padding: 1em;
+}
+
+.rights a {
+    text-decoration: none;
+    color: orange;
+}
