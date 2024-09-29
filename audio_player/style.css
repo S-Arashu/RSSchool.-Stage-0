@@ -1,0 +1,377 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+}
+
+@keyframes volume {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#bg_img {
+    height: 100vh;
+    width: 100%;
+    filter: blur(.5rem);
+}
+
+.player-container {
+    width: 60%;
+    height: 100vh;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    /* background-image: url(./img/beloje_bezmolvije.jpg);
+    filter: blur(.5rem);
+    background-size: contain; */
+    background-color: #0000007a;
+    box-shadow: 0px 1px 8px 10px rgba(255, 255, 255, 0.2);
+    top: 0;
+    left: 20%;
+    right: 20%;
+    /* z-index: 1; */
+}
+
+.song-container {
+    background: linear-gradient(0deg, rgba(28, 27, 25, 1) 29%, rgba(28, 27, 25, 0) 51%, rgba(28, 27, 25, 1) 79%), url(./img/beloje_bezmolvije.jpg);
+    /* background-blend-mode: multiply; */
+    width: 80%;
+    height: 50vh;
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    background-size: cover;
+    border-radius: 0 0 10% 10%;
+}
+
+#container-progress {
+    width: 90%;
+    height: .5rem;
+    background-color: #fff;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+#progress {
+    width: 0%;
+    height: 100%;
+    background-color: orange;
+    border-radius: 50% 0 0 50%;
+        /* margin-left: auto;
+        margin-right: auto; */
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+#container-progress:hover {
+    filter: drop-shadow(0px 0px 3px orange);
+}
+
+#song-name {
+    width: 80%;
+    height: 1rem;
+    font-size: 1.3em;
+    /* background-color: #ffffff26;
+    box-shadow: 0px 0px 70px 26px rgba(236, 238, 240, 0.2); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8%;
+    height: 3em;
+    color: azure;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container {
+    display: flex;
+    height: 50vh;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 56%;
+}
+
+#vol-icon {
+    text-align: end;
+    margin-right: 2.5%;
+    margin-top: 2.5%;
+    cursor: pointer;
+}
+
+#vol-icon img {
+    width: 30px;
+    height: 30px;
+}
+
+.time {
+    display: flex;
+    justify-content: center;
+    column-gap: .5em;
+    margin-top: 3em;
+    font-size: 2em;
+    color: azure;
+}
+
+.container-controls {
+    width: 100%;
+    height: 20vh;
+    background-color: #f0ffffa1;
+    margin-top: 5%;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controls {
+    width: 80%;
+    height: 10vh;
+    background-color: azure;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.toggle-music {
+    width: 15vh;
+    height: 15vh;
+    box-shadow: 0px 0px 8px 13px rgba(34, 60, 80, 0.2);
+    border-radius: 50%;
+    background-color: azure;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+.prev {
+    transition: .3s ease-in-out; 
+    width: 35%;
+    cursor: pointer;
+}
+
+.toggle-music img {
+    transition: .3s ease-in-out;
+    width: 45%;
+    cursor: pointer;
+}
+
+.next {
+    transition: filter .3s ease-in-out;
+    width: 35%;
+    cursor: pointer;
+}
+
+.toggle-music img {
+    margin-left: 7%;
+    
+}
+
+.toggle-music:hover > img {
+    transform: scale(1.3);
+}
+
+.prev:hover, .next:hover {
+    filter: drop-shadow(2px 6px 4px black);
+}
+
+.next {
+    transform: rotate(180deg);
+}
+
+.prev, .next {
+    width: 14%;
+}
+
+.pause {
+    background-image: url(./img/pause.png);
+}
+
+.volume {
+    display: none;
+    width: 50%;
+    height: 100%;
+    background-color: orange;
+    transition: .3s ease-in-out;
+}
+
+.volume-container {
+    animation: volume .3s ease-in-out forwards;
+    width: 19%;
+    background-color: azure;
+    height: 2%;
+    display: flex;
+    transform: rotate(90deg);
+    position: fixed;
+    right: 13.6%;
+    margin-top: 5%;
+    border-radius: 1em;
+    overflow: auto;
+    transition: .3s ease-in-out;
+    cursor: pointer;
+}
+
+#no-music {
+    display: none;
+    text-align: end;
+    margin-top: 35%;
+    animation: volume .3s ease-in-out forwards;
+    cursor: pointer;
+}
+
+#no-music img {
+    width: 10%;
+    height: 10%;
+}
+
+.muted {
+    filter: brightness(0.5);
+}
+
+.info-github img {
+    position: absolute;
+    bottom: 1%;
+    left: 1%;
+    width: 5%;
+}
+
+.info-year {
+    position: absolute;
+    color: azure;
+    bottom: -2%;
+    left: 10%;
+    font-size: 1.5em;
+}
+
+.info-logo img {
+    position: absolute;
+    width: 11%;
+    bottom: 2%;
+    right: 3%;
+    filter: drop-shadow(0px 0px 9px white);
+}
+
+@media (max-width: 1920px) {
+    .volume-container {
+        width: 17%;
+        margin-top: 9%;
+        right: 13.9%;
+    }
+
+    #no-music {
+        margin-top: 32%;
+    }
+}
+
+@media (max-width: 1690px) {
+    .volume-container {
+        width: 17%;
+        margin-top: 9%;
+        right: 14%;
+    }
+
+    #no-music {
+        margin-top: 32%;
+    }
+}
+
+@media (max-width: 1540px) {
+    .volume-container {
+        width: 17%;
+        margin-top: 9%;
+        right: 14.1%;
+    }
+
+    #no-music {
+        margin-top: 32%;
+    }
+}
+
+@media (max-width: 1390px) {
+    .volume-container {
+        width: 17%;
+        margin-top: 9%;
+        right: 14.2%;
+    }
+
+    #no-music {
+        margin-top: 32%;
+    }
+}
+
+@media (max-width: 1240px) {
+    .volume-container {
+        width: 17%;
+        margin-top: 9%;
+        right: 14.3%;
+    }
+
+    #no-music {
+        margin-top: 32%;
+    }
+}
+
+@media (max-width: 1120px) {
+    .volume-container {
+        width: 20%;
+        margin-top: 10%;
+        right: 13%;
+    }
+
+    #no-music {
+        margin-top: 36%;
+    }
+}
+
+@media (max-width: 1030px) {
+    .volume-container {
+        width: 20%;
+        margin-top: 10%;
+        right: 13.2%;
+    }
+
+    #no-music {
+        margin-top: 39%;
+    }
+}
+
+@media (max-width: 900px) {
+    .volume-container {
+        width: 20%;
+        margin-top: 10%;
+        right: 13.3%;
+    }
+
+    #no-music {
+        margin-top: 39%;
+    }
+}
+
+@media (max-width: 768px) {
+    .volume-container{
+        margin-top: 10%;
+        right: 13.7%;
+    }
+
+    #no-music {
+        margin-top: 37%;
+    }
+}
