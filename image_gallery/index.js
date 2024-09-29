@@ -448,3 +448,8 @@ let imgFav = document.createElement("img");
             search();
         }
     })
+
+    let upBtn = document.querySelector('.up-btn');
+    upBtn.onclick = function(){
+        window.scrollTo(0,0);
+    }

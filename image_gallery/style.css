@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
 }
@@ -34,7 +38,7 @@ body {
 }
 
 .gallery-img {
-    filter: blur(0.2em);
+    filter: blur(0.1em);
     transition: .3s ease-in-out;
 }
 
@@ -138,6 +142,11 @@ button img {
 
 .footer-links {
     width: 3em;
+    transition: .3s ease-in-out;
+}
+
+.footer-links:hover {
+    filter: drop-shadow(2px 4px 6px black);
 }
 
 .rights {
@@ -209,4 +218,19 @@ button img {
     padding: 15% 50%;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.up-btn {
+    position: fixed;
+    width: 5%;
+    right: 3%;
+    height: auto;
+    bottom: 2%;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+    z-index: 1;
+}
+
+.up-btn:hover {
+    transform: scale(1.3);
 }
