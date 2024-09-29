@@ -46,13 +46,33 @@ body {
     background-color: antiquewhite;
     box-shadow: 0px 12px 8px 0px rgba(34, 60, 80, 0.2);
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
 form {
     width: 50%;
     display: flex;
+    margin-left: 3%;
+}
+
+.fav-img {
+    margin-right: 3%;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+.fav-img:hover {
+    transform: scale(1.2);
+}
+
+.fav-img-checked {
+    filter: blur(0);
+}
+
+.gallery {
+    width: 100%;
+    height: 20vh;
 }
 
 input {
@@ -63,6 +83,16 @@ input {
     border-right: none;
     border-radius: 1em 0 0 1em;
     padding: 2%;
+    /* cursor: pointer; */
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    width: 30px;
+    height: 30px;
+    background: url(./img/cross.png);
+    margin-right: 2%;
+    cursor: pointer;
 }
 
 /* input:focus {
