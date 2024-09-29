@@ -6,6 +6,7 @@ let url = `https://api.unsplash.com/photos/random?orientation=landscape&client_i
 let likedPhoto = new Set();
 let favImg = document.querySelector('.fav-img');
 let container = document.querySelector('.container');
+let containerForFavImg = document.querySelector('.container-for-fav-img');
 
 async function getData() {
     const res = await fetch(url);
@@ -372,6 +373,7 @@ function showData(data) {
     favImg.addEventListener('click', () => {
 
                 container.style.display = 'none';
+                containerForFavImg.style.display = 'flex';
                 // let containerForFavImg = document.createElement('div');
                 // containerForFavImg.classList.add('container-for-fav-img');
                 // container.after(containerForFavImg); 
@@ -392,7 +394,7 @@ let imgFav = document.createElement("img");
         imgFav.setAttribute('id', data[j].id)
         imgFav.src = data[j].urls.small;
         imgFav.alt = data[j].alt_description;
-        container.after(imgFav); 
+        containerForFavImg.append(imgFav); 
                 }
                 
                 }
@@ -422,7 +424,8 @@ let imgFav = document.createElement("img");
             main.innerHTML = '';
             favImg.style.pointerEvents = 'auto';
             if(container.style.display == 'none'){
-                container.style.display = 'flex'
+                container.style.display = 'flex';
+                containerForFavImg.style.display = 'none';
             }
             let gallery = document.querySelectorAll('.gallery');
             if(gallery.length != 0){

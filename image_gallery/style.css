@@ -26,12 +26,25 @@ body {
     
 }
 
+.container-for-fav-img {
+    display: none;
+    flex-wrap: wrap;
+    margin: 5% auto;
+    justify-content: center;
+}
+
 .gallery-img {
     filter: blur(0.2em);
     transition: .3s ease-in-out;
 }
 
-.gallery-img:hover {
+.gallery {
+    transition: .3s ease-in-out;
+    width: 30%;
+    height: auto;
+}
+
+.gallery-img:hover, .gallery:hover {
     filter: blur(0);
     cursor: pointer;
     transform: scale(1.1);
@@ -68,11 +81,6 @@ form {
 
 .fav-img-checked {
     filter: blur(0);
-}
-
-.gallery {
-    width: 100%;
-    height: 20vh;
 }
 
 input {
@@ -152,7 +160,7 @@ button img {
 }
 
 .item-block {
-    width: 80%;
+    min-width: 10%;
     /* height: 40vh; */
     position: fixed;
     /* left: calc(50% / 2); */
