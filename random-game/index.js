@@ -1,6 +1,4 @@
-"use strict"
-
-
+"use strict";
 
 class Road {
     constructor (img, y){
@@ -20,16 +18,24 @@ class Road {
 }
 
 class Car {
-    constructor(img, x, y){
+    constructor(img, x, y, isPlayer){
         this.x = x;
         this.y = y;
+        this.isPlayer = isPlayer;
+        this.dead = false;
 
         this.image = new Image();
         this.image.src = img;
     }
 
     Update(){
-        this.y += speed;
+        if(!this.isPlayer){
+            this.y += speed;
+        }
+        
+        if(this.y > canvas.height + 50){
+            this.dead = true;
+        }
     }
 
     Move(coord, mov){
@@ -70,21 +76,25 @@ window.addEventListener('resize', Resize);
 
 window.addEventListener('keydown', function(elem){ Keydown(elem) });
 
-let cars = [
-    new Car("./img/car.png", window.innerWidth/2, window.innerHeight/2),
-];
+let cars = [];
 let roads = [
     new Road("./img/road.jpg", 0),
     new Road("./img/road.jpg", 626),
 ];
 
-let player = 0;
+let player = new Car("./img/car.png", window.innerWidth/2, window.innerHeight/2, true);
 let speed = 5;
+
+function Random(min, max){
+    let num = min - .5 + Math.random() * (max - min + 1);
+    return Math.round(num);
+}
 
 Start();
 
 function Start (){
     timer = setInterval(Update, 1000 / 60);
+    console.log(cars)
 }
 
 function Stop(){
@@ -94,6 +104,26 @@ function Stop(){
 function Update(){
     roads[0].Update(roads[1]);
     roads[1].Update(roads[0]);
+
+    if(Random(0, 10000) > 9700){
+        cars.push(new Car("./img/car_red.png", Random(30, canvas.width - 50), Random(250, 400) * -1, false));
+    }
+
+    player.Update();
+
+    let isDead = false;
+
+    for(let i=0; i<cars.length; i++){
+        cars[i].Update();
+
+        if(cars[i].dead){
+            isDead = true;
+        }
+    }
+
+    if(isDead){
+        cars.shift();
+    }
 
     Graphic()
 }
@@ -114,36 +144,42 @@ function Graphic(){
         )
     }
 
+    CreateCar(player);
+
     for(let i=0; i<cars.length; i++){
-        ctx.drawImage(
-            cars[i].image,
-            0, 0,
-            cars[i].image.width,
-            cars[i].image.height,
-            cars[i].x,
-            cars[i].y,
-            cars[i].image.width * size,
-            cars[i].image.height * size
-        )
+        CreateCar(cars[i]);
     }
+}
+
+function CreateCar(car){
+    ctx.drawImage(
+        car.image,
+        0, 0,        
+        car.image.width,
+        car.image.height,
+        car.x,
+        car.y,
+        car.image.width * size,
+        car.image.height * size
+    )
 }
 
 function Keydown(elem){
     switch(elem.keyCode){
         case 37:
-            cars[player].Move("x", -speed * 3);
+            player.Move("x", -speed * 3);
             break;
         
         case 39:
-            cars[player].Move("x", speed * 3);
+            player.Move("x", speed * 3);
             break;
 
         case 38:
-            cars[player].Move("y", -speed * 3);
+            player.Move("y", -speed * 3);
             break;
 
         case 40:
-            cars[player].Move("y", speed * 3);
+            player.Move("y", speed * 3);
             break;
 
         case 27:
