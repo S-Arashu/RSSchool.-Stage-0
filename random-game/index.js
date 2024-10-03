@@ -38,6 +38,18 @@ class Car {
         }
     }
 
+    Crash(car){
+        let hit = false;
+
+        if(this.y < car.y + car.image.height * size && this.y + this.image.height * size > car.y){
+            if(this.x < car.x + car.image.width * size && this.x + this.image.width * size > car.x){
+                hit = true;
+            }
+        }
+
+        return hit;
+    }
+
     Move(coord, mov){
         if(coord == "x"){
             this.x += mov
@@ -123,6 +135,19 @@ function Update(){
 
     if(isDead){
         cars.shift();
+    }
+
+    let hit = false;
+
+    for(let i=0; i<cars.length; i++){
+        hit = player.Crash(cars[i]);
+
+        if(hit){
+            alert("Tsshhh!!!");
+            Stop();
+            player.dead = true;
+            break;
+        }
     }
 
     Graphic()
