@@ -79,6 +79,7 @@ let timer = null;
 
 let canvas = document.querySelector("#canvas");
 let ctx = canvas.getContext("2d");
+let body = document.querySelector('body');
 
 let size = .2;
 
@@ -111,6 +112,7 @@ function Start (){
 
 function Stop(){
     clearInterval(timer);
+    body.style.overflow = '';
 }
 
 function Update(){
