@@ -80,6 +80,15 @@ let timer = null;
 let canvas = document.querySelector("#canvas");
 let ctx = canvas.getContext("2d");
 let body = document.querySelector('body');
+let darkBlock = document.querySelector(".dark-block");
+let yes = document.querySelector(".yes");
+let no = document.querySelector(".no");
+let emptyPlace = document.querySelector(".empty-place");
+let bestTime = document.querySelector(".score");
+let start;
+let end;
+let time;
+let score = [];
 
 let size = .2;
 
@@ -103,16 +112,61 @@ function Random(min, max){
     return Math.round(num);
 }
 
-Start();
+yes.addEventListener("click", Start);
+no.addEventListener("click", () => {
+    emptyPlace.innerHTML = "It was a great race!"
+})
 
 function Start (){
     timer = setInterval(Update, 1000 / 60);
-    console.log(cars)
+    darkBlock.classList.toggle('disappear');
+    emptyPlace.innerHTML = '';
+    body.style.overflow = 'hidden';
+    start = new Date().getTime();
 }
 
 function Stop(){
     clearInterval(timer);
+    darkBlock.classList.toggle('disappear');
     body.style.overflow = '';
+    cars.length = 0;
+    end = new Date().getTime();
+    time = end - start;
+    score.push(time);
+    score.sort(function (a, b) {
+        return b - a;
+    });
+    if(score.length > 10){
+        score.pop();
+    }
+    localStorage.setItem("score", score)
+    if(localStorage.length != 0){
+        bestTime.innerHTML = '';
+        bestTime.style.justifyContent = 'flex-start';
+        let p = document.createElement("p");
+        // bestTime.prepend(p);
+        p.innerHTML = `Score`;
+        p.classList.add("time-table");
+        let ol = document.createElement('ol');
+        bestTime.prepend(ol);
+        ol.before(p);
+        let data = localStorage.score.split(",");
+        console.log(localStorage.score)
+        console.log(data)
+        console.log(data.length)
+        console.log(data)
+        console.log(data.length)
+        for(let i=0; i<data.length; i++) {
+        let li = document.createElement('li');
+        if(Math.round(data[i] / 60000) > 0){
+            li.innerHTML = `${Math.round(data[i] / 60000)} min ${Math.round(data[i] / 1000) - Math.round(data[i] / 60000) * 60} sek`;
+        } else {
+            li.innerHTML = `${Math.round(data[i] / 1000)} sek`;
+        }
+        ol.append(li);
+        }
+    }
+    
 }
 
 function Update(){
@@ -145,9 +199,12 @@ function Update(){
         hit = player.Crash(cars[i]);
 
         if(hit){
-            alert("Tsshhh!!!");
             Stop();
             player.dead = true;
+            // time = end - start;
+            // score.push(time);
+            // localStorage.setItem("score", score)
+            console.log(time)
             break;
         }
     }
@@ -194,19 +251,19 @@ function CreateCar(car){
 function Keydown(elem){
     switch(elem.keyCode){
         case 37:
-            player.Move("x", -speed * 3);
+            player.Move("x", -speed * 4);
             break;
         
         case 39:
-            player.Move("x", speed * 3);
+            player.Move("x", speed * 4);
             break;
 
         case 38:
-            player.Move("y", -speed * 3);
+            player.Move("y", -speed * 4);
             break;
 
         case 40:
-            player.Move("y", speed * 3);
+            player.Move("y", speed * 4);
             break;
 
         case 27:

@@ -6,13 +6,14 @@ body, html {
     /* overflow: hidden; */
 }
 
-body {
+/* body {
     overflow: hidden;
-}
+} */
 
 .wrapper-for-game {
     width: 100%;
     height: 100%;
+    position: relative;
 }
 
 .canvas-for-game {
@@ -64,4 +65,59 @@ body {
 
 .info-github:hover > img, .info-logo:hover > img {
     filter: drop-shadow(0px 0px 9px white);
+}
+
+.dark-block {
+    width: 100%;
+    height: 100vh;
+    background-color: #00000096;
+    z-index: 1;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.score-and-start {
+    width: 80%;
+    height: 60vh;
+    background-color: beige;
+    border-radius: 2em;
+    display: flex;
+    justify-content: space-around;
+}
+
+.score, .question, .wrapper-for-buttons {
+    font-size: 2em;
+}
+
+.score {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.wrapper-for-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+    height: -webkit-fill-available;
+    align-items: center;
+}
+
+.button {
+    border: 3px solid brown;
+    padding: 5%;
+    border-radius: 2em;
+    transition: .3s ease-in-out;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: brown;
+}
+
+.disappear {
+    display: none;
 }
