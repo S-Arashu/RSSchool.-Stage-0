@@ -89,6 +89,7 @@ let start;
 let end;
 let time;
 let score = [];
+let level = document.querySelector("#quantity");
 
 let size = .2;
 
@@ -106,6 +107,18 @@ let roads = [
 
 let player = new Car("./img/car.png", window.innerWidth/2, window.innerHeight/2, true);
 let speed = 5;
+
+level.addEventListener("keypress", (e) => {
+    if(e.key === "Enter"){
+        console.log(e.target.value)
+        if(e.target.value > 10 || e.target.value < 0){
+            alert("Please, enter number from 0 to 10")
+        } else {
+            speed += +e.target.value;
+            Start();
+        }
+    }
+})
 
 function Random(min, max){
     let num = min - .5 + Math.random() * (max - min + 1);
@@ -127,6 +140,7 @@ function Start (){
 
 function Stop(){
     clearInterval(timer);
+    speed = 5;
     darkBlock.classList.toggle('disappear');
     body.style.overflow = '';
     cars.length = 0;
