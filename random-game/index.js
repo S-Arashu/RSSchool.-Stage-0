@@ -41,8 +41,8 @@ class Car {
     Crash(car){
         let hit = false;
 
-        if(this.y < car.y + car.image.height * size && this.y + this.image.height * size > car.y){
-            if(this.x < car.x + car.image.width * size && this.x + this.image.width * size > car.x){
+        if(this.y < car.y + car.image.height * size && this.y + this.image.height * size >= car.y){
+            if(this.x < car.x + car.image.width * size && this.x + this.image.width * size >= car.x){
                 hit = true;
             }
         }
@@ -90,6 +90,7 @@ let end;
 let time;
 let score = [];
 let level = document.querySelector("#quantity");
+let count = 9750;
 
 let size = .2;
 
@@ -115,6 +116,7 @@ level.addEventListener("keypress", (e) => {
             alert("Please, enter number from 0 to 10")
         } else {
             speed += +e.target.value;
+            count -= +e.target.value * 10;
             Start();
         }
     }
@@ -173,7 +175,7 @@ function Stop(){
         for(let i=0; i<data.length; i++) {
         let li = document.createElement('li');
         if(Math.round(data[i] / 60000) > 0){
-            li.innerHTML = `${Math.round(data[i] / 60000)} min ${Math.round(data[i] / 1000) - Math.round(data[i] / 60000) * 60} sek`;
+            li.innerHTML = `${Math.round(data[i] / 60000)} min ${Math.round(data[i] / 1000) % 60} sek`;
         } else {
             li.innerHTML = `${Math.round(data[i] / 1000)} sek`;
         }
@@ -187,8 +189,24 @@ function Update(){
     roads[0].Update(roads[1]);
     roads[1].Update(roads[0]);
 
-    if(Random(0, 10000) > 9700){
-        cars.push(new Car("./img/car_red.png", Random(30, canvas.width - 50), Random(250, 400) * -1, false));
+    let bots;
+
+    random: if(Random(0, 10000) > count){
+        
+        bots = new Car("./img/car_red.png", Random(30, canvas.width - 50), Random(250, 400) * -1, false);
+        console.log(bots.y)
+        for(let i=0; i<cars.length; i++){
+        // for(let j=0; j<cars.length; j++){
+            if(bots.Crash(cars[i])){
+                // cars = cars.filter((car) => car !== cars[j]);
+                return;
+            }
+        // }
+            
+        }
+        
+        cars.push(bots);
+        
     }
 
     player.Update();
@@ -243,6 +261,8 @@ function Graphic(){
     }
 
     CreateCar(player);
+
+    
 
     for(let i=0; i<cars.length; i++){
         CreateCar(cars[i]);
