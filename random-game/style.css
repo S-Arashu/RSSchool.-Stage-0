@@ -92,6 +92,7 @@ body, html {
     gap: 7%;
     height: -webkit-fill-available;
     align-items: center;
+    height: 15%;
 }
 
 .button {
