@@ -75,6 +75,24 @@ class Car {
     }
 }
 
+let music = [
+    {song: './music/01-snoop-dogg-ft-the-doors-riders-on-the-storm.mp3'},
+    {song: './music/Chingy - I Do.mp3'},
+    {song: './music/Helmet - Crashing Foreign Cars.mp3'},
+    {song: './music/Killing Joke - The Death and Resurrection Show.mp3'},
+    {song: './music/Killradio - Scavenger.mp3'},
+    {song: './music/Ministry - No W.mp3'},
+    {song: './music/Paul van Dyk - Nothing but You.mp3'},
+    {song: './music/Queens of the Stoneage - In my Head.mp3'},
+    {song: './music/Rise Against - Give it All.mp3'},
+    {song: './music/Skindred - Nobody.mp3'},
+    {song: './music/Sonic Animation - E-Ville.mp3'},
+    {song: './music/SpiderBait - Black Betty.mp3'},
+    {song: './music/Static-X - The Only.mp3'},
+    {song: './music/Terror Squad - Lean Back.mp3'},
+    {song: './music/Unwritten Law - The Celebration Song.mp3'},
+]
+
 let timer = null;
 
 let canvas = document.querySelector("#canvas");
@@ -116,7 +134,7 @@ level.addEventListener("keypress", (e) => {
             alert("Please, enter number from 0 to 10")
         } else {
             speed += +e.target.value;
-            count -= +e.target.value * 10;
+            count -= +e.target.value * 5;
             Start();
         }
     }
@@ -132,19 +150,30 @@ no.addEventListener("click", () => {
     emptyPlace.innerHTML = "It was a great race!"
 })
 
+
+
 function Start (){
     timer = setInterval(Update, 1000 / 60);
     darkBlock.classList.toggle('disappear');
     emptyPlace.innerHTML = '';
     body.style.overflow = 'hidden';
+    let audio = document.createElement('audio');
+    audio.setAttribute('src', music[Random(0,14)].song);
+    console.log(music[Random(0,14)].song)
+    audio.setAttribute('loop', 'loop');
+    canvas.append(audio);
+    audio.play();
     start = new Date().getTime();
 }
 
 function Stop(){
     clearInterval(timer);
     speed = 5;
+    count = 9750;
     darkBlock.classList.toggle('disappear');
     body.style.overflow = '';
+    let audioSong = document.querySelector('audio');
+    audioSong.remove();
     cars.length = 0;
     end = new Date().getTime();
     time = end - start;
@@ -160,7 +189,6 @@ function Stop(){
         bestTime.innerHTML = '';
         bestTime.style.justifyContent = 'flex-start';
         let p = document.createElement("p");
-        // bestTime.prepend(p);
         p.innerHTML = `Score`;
         p.classList.add("time-table");
         let ol = document.createElement('ol');
@@ -196,13 +224,9 @@ function Update(){
         bots = new Car("./img/car_red.png", Random(30, canvas.width - 50), Random(250, 400) * -1, false);
         console.log(bots.y)
         for(let i=0; i<cars.length; i++){
-        // for(let j=0; j<cars.length; j++){
             if(bots.Crash(cars[i])){
-                // cars = cars.filter((car) => car !== cars[j]);
                 return;
             }
-        // }
-            
         }
         
         cars.push(bots);
@@ -233,9 +257,6 @@ function Update(){
         if(hit){
             Stop();
             player.dead = true;
-            // time = end - start;
-            // score.push(time);
-            // localStorage.setItem("score", score)
             console.log(time)
             break;
         }

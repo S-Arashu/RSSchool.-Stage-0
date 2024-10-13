@@ -3,12 +3,7 @@ body, html {
     height: 100%;
     margin: 0;
     padding: 0;
-    /* overflow: hidden; */
 }
-
-/* body {
-    overflow: hidden;
-} */
 
 .wrapper-for-game {
     width: 100%;
@@ -38,29 +33,18 @@ body, html {
 }
 
 .info-github img {
-    /* position: absolute; */
-    /* bottom: 1%;
-    left: 1%;*/
     width: 15%; 
     transition: .3s ease-in-out;
 }
 
 .info-year {
-    /* position: absolute; */
     color: azure;
     font-size: 2em;
-    /* bottom: -2%;
-    left: 10%;
-    font-size: 1.5em; */
 }
 
 .info-logo img {
-    /* position: absolute; */
     width: 25%;
     transition: .3s ease-in-out;
-    /*bottom: 2%;
-    right: 3%; */
-    
 }
 
 .info-github:hover > img, .info-logo:hover > img {
