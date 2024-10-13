@@ -1,0 +1,107 @@
+[
+  {
+    "id": "1",
+    "name_song": "Гражданская Оборона - Белое безмолвие",
+    "song": "./music/Гражданская Оборона - Белое безмолвие 2.mp3",
+    "img": "./img/beloje_bezmolvije.jpg",
+    "bg_img": "./img/beloje_bezmolvije_bg.jpg"
+  },
+  {
+    "id": "2",
+    "name_song": "Порнофильмы - Кто все эти люди",
+    "song": "./music/Порнофильмы - Кто все эти люди.mp3",
+    "img": "./img/kto_vse_eti_ljudi.jpg",
+    "bg_img": "./img/kto_vse_eti_ljudi_bg.jpg"
+  },
+  {
+    "id": "3",
+    "name_song": "Алиса - Нае@али",
+    "song": "./music/Алиса - Нае@али.mp3",
+    "img": "./img/naeb@li.jpg",
+    "bg_img": "./img/naeb@li_bg.jpg"
+  },
+  {
+    "id": "4",
+    "name_song": "Ария - Убить дракона",
+    "song": "./music/Ария - Убить дракона 2.mp3",
+    "img": "./img/ubit_drakona.jpg",
+    "bg_img": "./img/ubit_drakona_bg.webp"
+  },
+  {
+    "id": "5",
+    "name_song": "БИ-2 - Вечная призрачная встречная",
+    "song": "./music/БИ-2 - Вечная призрачная встречная.mp3",
+    "img": "./img/vechnaja.jpg",
+    "bg_img": "./img/vechnaja_bg.jpg"
+  },
+  {
+    "id": "6",
+    "name_song": "Владимир Высоцкий - Маски",
+    "song": "./music/Владимир Высоцкий - Маски.mp3",
+    "img": "./img/maski.jpg",
+    "bg_img": "./img/maski_bg.jpg"
+  },
+  {
+    "id": "7",
+    "name_song": "Вольскі - Ламай сцэнар",
+    "song": "./music/Вольскі - Ламай сцэнар.mp3",
+    "img": "./img/lamaj_stsenar.jpg",
+    "bg_img": "./img/lamaj_stsenar_bg.jpg"
+  },
+  {
+    "id": "8",
+    "name_song": "Группа Ключи - Гроза",
+    "song": "./music/Группа Ключи - Гроза.mp3",
+    "img": "./img/groza.jpeg",
+    "bg_img": "./img/groza_bg.webp"
+  },
+  {
+    "id": "9",
+    "name_song": "Мальдивы",
+    "song": "./music/Дай Дарогу! - Мальдивы.mp3",
+    "img": "./img/maldivy.jpg",
+    "bg_img": "./img/maldivy_bg.jpg"
+  },
+  {
+    "id": "10",
+    "name_song": "Король и Шут - Город мертвецов",
+    "song": "./music/Король и Шут - Город мертвецов.mp3",
+    "img": "./img/gorod_mertvetsov.jpg",
+    "bg_img": "./img/gorod_mertvetsov_bg.webp"
+  },
+  {
+    "id": "11",
+    "name_song": "Нуки - Бойся",
+    "song": "./music/Нуки - Бойся.mp3",
+    "img": "./img/boisja.jpg",
+    "bg_img": "./img/boisja_bg.jpg"
+  },
+  {
+    "id": "12",
+    "name_song": "Нуки(СЛОТ) - Бой",
+    "song": "./music/Нуки(СЛОТ) - Бой.mp3",
+    "img": "./img/boj.jpeg",
+    "bg_img": "./img/boj_bg.jpg"
+  },
+  {
+    "id": "13",
+    "name_song": "Элизиум - S.A.T.A.N",
+    "song": "./music/Элизиум - S.A.T.A.N.mp3",
+    "img": "./img/satan.jpeg",
+    "bg_img": "./img/satan_bg.jpeg"
+  },
+  {
+    "id": "14",
+    "name_song": "Эпидемия - Чёрный маг",
+    "song": "./music/Эпидемия - Чёрный маг.mp3",
+    "img": "./img/chernyj_mag.jpg",
+    "bg_img": "./img/chernyj_mag_bg.jpg"
+  },
+  {
+    "id": "15",
+    "name_song": "Matheo & Damian Ukeje - Kocham wolność Legendy Polskie",
+    "song": "./music/Matheo & Damian Ukeje - Kocham wolność Legendy Polskie.mp3",
+    "img": "./img/legendy_polskie.jpg",
+    "bg_img": "./img/legendy_polskie_bg.jpg"
+  }
+]

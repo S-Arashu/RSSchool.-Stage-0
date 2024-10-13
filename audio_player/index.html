@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio-player</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <script defer type="module" src="./index.js"></script>
+</head>
+<body>
+    <img src="./img/beloje_bezmolvije_bg.jpg" alt="Гражданская Оборона - Белое безмолвие" id="bg_img">
+    <div class="player-container">
+        <div class="song-container">
+            <div class="container">
+                <div id="container-progress">
+                    <div id="progress"></div>
+                    <!-- <div id="vol-icon"></div> -->
+                </div>
+                <audio src="./music/Гражданская Оборона - Белое безмолвие 2.mp3"></audio>
+                <div id="song-name">Гражданская Оборона - Белое безмолвие</div>
+            </div>
+        <div class="time">
+            <div class="current">0 : 00</div>
+            <div class="divider">/</div>
+            <div class="length">3 : 27</div>
+        </div>  
+        <div class="container-controls">
+            <div class="controls">
+                <!-- <div class="prew"> -->
+                    <img src="./img/prew.png" class="prev" alt="Previous">
+                <!-- </div> -->
+                <div class="toggle-music"><img src="./img//play.png" alt="Play/Pause"></div>
+                <!-- <div class="next"> -->
+                    <img src="./img/prew.png" class="next" alt="Next">
+                <!-- </div> -->
+            </div>
+        </div>
+        </div>
+        <div id="vol-icon"><img src="./img/volume.png" alt="volume"></div>
+        <div class="volume-container" style="display: none;">
+            <div class="volume"></div>
+            
+        </div>
+        <div id="no-music"><img src="./img/no-music.png" alt="Muted"></div>
+    </div>
+    <div class="info">
+        <a class="info-github" href="https://github.com/S-Arashu" target="_blank"><img src="./img/github.png" alt="Github"></a>
+        <p class="info-year">© 2024</p>
+        <a class="info-logo" href="https://rs.school/courses/javascript-preschool-ru" target="_blank"><img src="./img/logo-rsschool.png" alt="Logo"></a>
+    </div>
+</body>
+</html>
