@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Races</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="wrapper-for-game">
+            <div class="dark-block">
+        <div class="score-and-start">
+            <div class="start">
+                <p class="question">Do you want to start?</p>
+                <div class="wrapper-for-buttons">
+                    <div class="yes button">Of course!</div>
+                    <div class="no button">Oh God, no!</div>
+                    <p class="empty-place"></p>
+                    <div class="level"> 
+                        <label for="quantity">Which level do you prefer (from 0 to 10)? Choose and press Enter</label>
+                        <input type="number" id="quantity" value="0" min="0" max="5">
+                    </div>
+                </div>
+            </div>
+            <div class="score">It`s empty here... but not for long 😎</div>
+        </div>
+    </div>
+        <canvas width="0" height="0" class="canvas-for-game" id="canvas"></canvas>
+    </div>
+
+    <div class="info">
+        <a class="info-github" href="https://github.com/S-Arashu" target="_blank"><img src="./img/github.png" alt="Github"></a>
+        <p class="info-year">© 2024</p>
+        <a class="info-logo" href="https://rs.school/courses/javascript-preschool-ru" target="_blank"><img src="./img/logo-rsschool.png" alt="Logo"></a>
+    </div>
+    <script src="./index.js"></script>
+</body>
+</html>
